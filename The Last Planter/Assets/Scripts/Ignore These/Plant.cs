@@ -17,9 +17,6 @@ public class Plant : MonoBehaviour
     public CompoundAssociation waterAssociation;
     public float maxOsmosis;
 
-    [Header("Battle Behaviour")]
-    public IAttack attackScript;
-
     [Header("Debug")]
     public float diffusionRate;
     public float minWaterSolubility;
