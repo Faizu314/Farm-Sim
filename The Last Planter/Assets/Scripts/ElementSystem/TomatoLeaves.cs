@@ -1,19 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class TomatoSeed : PlantElement
+public class TomatoLeaves : PlantElement
 {
     protected override void Function(float deltaTime)
     {
+        Photosynthesis(deltaTime);
         ExchangeCompoundsWithSustainer(deltaTime);
+        GiveFoodToSustainer(0.05f, deltaTime);
     }
     protected override void Grow(float deltaTime)
     {
         foodStore -= growthFoodConsumption * deltaTime;
         growth += growthIncrement * deltaTime;
-    }
-    protected override void ShowSymptoms(int compoundIndex, bool isExcess)
-    {
-        throw new System.NotImplementedException();
     }
     protected override void HideSymptoms()
     {
@@ -21,12 +21,13 @@ public class TomatoSeed : PlantElement
     }
     protected override void Morph()
     {
-        output.Initialize(sustainer);
-        output.gameObject.SetActive(true);
-        PassEverthingToOutput();
-        gameObject.SetActive(false);
+        throw new System.NotImplementedException();
     }
     protected override void Offspring()
+    {
+        throw new System.NotImplementedException();
+    }
+    protected override void ShowSymptoms(int compoundIndex, bool isExcess)
     {
         throw new System.NotImplementedException();
     }

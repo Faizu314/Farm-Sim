@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PlantElement : MonoBehaviour, ICompoundChannel
 {
-    private enum LifeCycle { Morph, offspring };
+    private enum LifeCycle { None, Morph, offspring };
 
     [Header("Plant Properties")]
 
@@ -20,22 +20,44 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     [SerializeField] private float requiredMorphingGrowth;
     [SerializeField] private float initialFoodStore;
 
-    private float growth;
-    private float health;
-    private float foodStore;
+    protected float growth;
+    protected float foodStore;
 
+    private float health;
     private float function_dt;
     private float grow_dt;
-    private bool deactivated;
+    private bool isHealthy;
+    private bool outputSpawned;
+
+    [Header("Debug")]
+    public float respireFoodConsumption;
+    public float respireWaterConsumption;
+    public float growthFoodConsumption;
+    public float growthIncrement;
+    public float healthIncrement;
 
     private void Update()
     {
-        if (deactivated)
-            return;
         FunctionStep();
         GrowStep();
-        //Respire(Time.deltaTime);
+        Live(Time.deltaTime);
         AttemptOutput();
+    }
+    private void OnDisable()
+    {
+        status.Reset();
+        //Initialize(null);
+    }
+    public void Initialize(ICompoundChannel sustainer)
+    {
+        this.sustainer = sustainer;
+        function_dt = grow_dt = 0f;
+        isHealthy = true;
+        outputSpawned = false;
+        growth = 0f;
+        health = 50f;
+        foodStore = initialFoodStore;
+        status.Initialize();
     }
 
     private void FunctionStep()
@@ -52,97 +74,143 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         grow_dt += Time.deltaTime;
         if (grow_dt >= growPeriod)
         {
-            Grow(grow_dt);
+            if (foodStore >= growthFoodConsumption * grow_dt)
+                Grow(grow_dt);
+            else
+                health -= healthIncrement * grow_dt;
             grow_dt = 0f;
         }
     }
-    private void Respire(float deltaTime) {
-        foodStore -= deltaTime;
+    private void Live(float deltaTime)
+    {
+        if (foodStore >= respireFoodConsumption * deltaTime && GetContent(0) >= respireWaterConsumption * deltaTime)
+        {
+            foodStore -= respireFoodConsumption * deltaTime;
+            UpdateContent(0, respireWaterConsumption * deltaTime);
+        }
+        else
+            health -= healthIncrement * deltaTime;
+
+        health += status.GetWellBeing() * deltaTime;
+        if (health < 10 && isHealthy)
+        {
+            Debug.Log(gameObject.name + ": is unhealthy");
+            isHealthy = false;
+            (int index, bool isExcess) = status.GetSymptom();
+            ShowSymptoms(index, isExcess);
+        }
+        else if (health > 20 && !isHealthy)
+        {
+            Debug.Log(gameObject.name + ": is healthy again");
+            isHealthy = true;
+            HideSymptoms();
+        }
     }
     private void AttemptOutput()
     {
-        if (lifeCycle == LifeCycle.Morph)
+        if (outputSpawned)
+            return;
+        switch (lifeCycle)
         {
-            if (growth >= requiredMorphingGrowth)
-            {
-                Morph();
-            }
-        }
-        else if (lifeCycle == LifeCycle.offspring)
-        {
-            if (growth >= requiredOffspringGrowth)
-            {
-                Offspring();
-            }
-        }
-    }
-
-    protected void ExchangeCompoundsWithSustainer(float deltaTime, float multiplier = 1f)
-    {
-        status.ExchangeCompound(sustainer, deltaTime, multiplier);
-    }
-    protected void ExchangeCompoundsWithOffspring(float deltaTime, float multiplier = 1f)
-    {
-        if (growth >= requiredOffspringGrowth)
-            status.ExchangeCompound(output, deltaTime, multiplier);
-    }
-    protected void GiveFoodToSustainer()
-    {
-        if (sustainer is PlantElement)
-        {
-            GiveFood(sustainer as PlantElement);
-        }
-        else
-        {
-            Debug.LogError("Cannot transfer food (Starch) with a non plant sustainer (Sustainer is soil/pot)\n GameObject: " + gameObject.name);
+            case LifeCycle.None:
+                return;
+            case LifeCycle.Morph:
+                if (growth >= requiredMorphingGrowth)
+                {
+                    Morph();
+                    outputSpawned = true;
+                }
+                break;
+            case LifeCycle.offspring:
+                if (growth >= requiredOffspringGrowth)
+                {
+                    Offspring();
+                    outputSpawned = true;
+                }
+                break;
         }
     }
-    protected void GiveFoodToOffspring()
+    private void GiveFood(PlantElement other, float percentage, float deltaTime)
     {
-        GiveFood(output);
-    }
-    protected void Photosynthesis()
-    {
-
-    }
-
-    private void GiveFood(PlantElement other)
-    {
-        other.RecieveFood(foodStore / 10f);
+        other.RecieveFood(foodStore * deltaTime * percentage);
+        foodStore -= foodStore * deltaTime * percentage;
     }
     private void RecieveFood(float amount)
     {
         foodStore += amount;
     }
 
-    public void Initialize(ICompoundChannel sustainer)
-    {
-        this.sustainer = sustainer;
-        deactivated = false;
-        function_dt = grow_dt = 0f;
-        growth = 0f;
-        health = 50f;
-        foodStore = initialFoodStore;
-        status.Initialize();
-    }
-    public void Deactivate()
-    {
-        Initialize(null);
-        status.Reset();
-        deactivated = true;
-    }
 
+    #region Abstract Functions
+    protected abstract void Function(float deltaTime);
+    protected abstract void Grow(float deltaTime);
+    protected abstract void ShowSymptoms(int compoundIndex, bool isExcess);
+    protected abstract void HideSymptoms();
+    protected abstract void Offspring();
+    protected abstract void Morph();
+    #endregion
+
+    #region UserInterface
+    protected void ExchangeCompoundsWithSustainer(float deltaTime, float multiplier = 1f)
+    {
+        status.ExchangeCompounds(sustainer, deltaTime, multiplier);
+    }
+    protected void ExchangeCompoundsWithOffspring(float deltaTime, float multiplier = 1f)
+    {
+        if (lifeCycle == LifeCycle.offspring && growth >= requiredOffspringGrowth)
+            status.ExchangeCompounds(output, deltaTime, multiplier);
+    }
+    protected void GiveFoodToSustainer(float percentage, float deltaTime)
+    {
+        if (sustainer is PlantElement)
+        {
+            GiveFood(sustainer as PlantElement, percentage, deltaTime);
+        }
+        else
+        {
+            Debug.LogError("Cannot transfer food (Starch) with a non plant sustainer (Soil/Pot are non plant sustainers)\n GameObject: " + gameObject.name);
+        }
+    }
+    protected void GiveFoodToOffspring(float percentage, float deltaTime)
+    {
+        GiveFood(output, percentage, deltaTime);
+    }
+    protected void PassEverthingToOutput()
+    {
+        List<float> deltaContent = GetContent();
+        output.UpdateContent(deltaContent);
+        output.RecieveFood(foodStore);
+    }
+    protected void Photosynthesis(float deltaTime)
+    {
+        if (GetContent(0) >= 0.05f * deltaTime &&
+            GetContent(1) >= 0.05f * deltaTime &&
+            GetContent(3) >= 0.05f * deltaTime) 
+        {
+            foodStore += 0.04f * (1f + growth) * deltaTime;
+            UpdateContent(0, -0.05f * deltaTime);
+            UpdateContent(1, -0.05f * deltaTime);
+            UpdateContent(3, -0.05f * deltaTime);
+        }
+    }   
+    #endregion
+
+    #region ICompoundChannel Implementation
     public List<float> GetContent()
     {
         return status.GetContent();
+    }
+    public float GetContent(int index)
+    {
+        return status.GetContent(index);
     }
     public void UpdateContent(List<float> deltaContent)
     {
         status.UpdateContent(deltaContent);
     }
-
-    protected abstract void Function(float deltaTime);
-    protected abstract void Grow(float deltaTime);
-    protected abstract void Offspring();
-    protected abstract void Morph();
+    public void UpdateContent(int index, float deltaContent)
+    {
+        status.UpdateContent(index, deltaContent);
+    }
+    #endregion
 }
