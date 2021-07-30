@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace PlantTransport
 {
@@ -9,13 +10,18 @@ namespace PlantTransport
         public static readonly float MIN_WATER_SOLUBILITY = 0.2f;
         public static float Diffuse(float otherContent, float myContent, float surfaceArea)
         {
-            return (otherContent - myContent) * surfaceArea * DIFFUSION_RATE;
+            float amount = (otherContent - myContent) / (otherContent + myContent + 0.01f) * surfaceArea * DIFFUSION_RATE;
+            if (amount > 0f && amount > otherContent)
+                amount = otherContent;
+            else if (amount < 0f && amount > myContent)
+                amount = myContent;
+            return amount;
         }
         public static float Osmosis(float otherWaterContent, float myWaterContent, float surfaceArea, float maxOsmosis)
         {
             float amount = Diffuse(otherWaterContent, myWaterContent, surfaceArea);
-            if (amount > maxOsmosis)
-                amount = maxOsmosis;
+            if (Mathf.Abs(amount) > maxOsmosis)
+                amount = Mathf.Sign(amount) * maxOsmosis;
             return amount;
         }
         public static float GetWaterSolubility(List<float> mineralContent)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PlantElement : MonoBehaviour, ICompoundChannel
 {
-    private enum LifeCycle { None, Morph, offspring };
+    private enum LifeCycle { None, Output };
 
     [Header("Plant Properties")]
 
@@ -16,8 +16,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     [SerializeField] private float functionPeriod;
     [SerializeField] private float growPeriod;
 
-    [SerializeField] private float requiredOffspringGrowth;
-    [SerializeField] private float requiredMorphingGrowth;
+    [SerializeField] private float requiredOutputGrowth;
     [SerializeField] private float initialFoodStore;
 
     protected float growth;
@@ -26,8 +25,8 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     private float health;
     private float function_dt;
     private float grow_dt;
+    private bool outputsSpawned;
     private bool isHealthy;
-    private bool outputSpawned;
 
     [Header("Debug")]
     public float respireFoodConsumption;
@@ -38,9 +37,11 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
 
     private void Update()
     {
+        if (health <= 0f)
+            return;
+        Live(Time.deltaTime);
         FunctionStep();
         GrowStep();
-        Live(Time.deltaTime);
         AttemptOutput();
     }
     private void OnDisable()
@@ -53,7 +54,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         this.sustainer = sustainer;
         function_dt = grow_dt = 0f;
         isHealthy = true;
-        outputSpawned = false;
+        outputsSpawned = false;
         growth = 0f;
         health = 50f;
         foodStore = initialFoodStore;
@@ -76,8 +77,6 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         {
             if (foodStore >= growthFoodConsumption * grow_dt)
                 Grow(grow_dt);
-            else
-                health -= healthIncrement * grow_dt;
             grow_dt = 0f;
         }
     }
@@ -91,7 +90,15 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         else
             health -= healthIncrement * deltaTime;
 
-        health += status.GetWellBeing() * deltaTime;
+        float wellBeing = status.GetWellBeing() * deltaTime;
+        if (!(health <= 10f && wellBeing < 0f))
+            health += wellBeing;
+        if (health <= 0f)
+        {
+            Debug.Log(gameObject.name + " is dead");
+        }
+        else if (health >= 100f)
+            health = 100f;
         if (health < 10 && isHealthy)
         {
             Debug.Log(gameObject.name + ": is unhealthy");
@@ -105,35 +112,38 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
             isHealthy = true;
             HideSymptoms();
         }
+        if (foodStore < 1f)
+        {
+            if (sustainer is PlantElement element)
+            {
+                element.GiveFood(this, 1f);
+            }
+        }
     }
     private void AttemptOutput()
     {
-        if (outputSpawned)
+        if (outputsSpawned)
             return;
         switch (lifeCycle)
         {
             case LifeCycle.None:
                 return;
-            case LifeCycle.Morph:
-                if (growth >= requiredMorphingGrowth)
+            case LifeCycle.Output:
+                if (growth >= requiredOutputGrowth)
                 {
-                    Morph();
-                    outputSpawned = true;
-                }
-                break;
-            case LifeCycle.offspring:
-                if (growth >= requiredOffspringGrowth)
-                {
-                    Offspring();
-                    outputSpawned = true;
+                    Output();
+                    outputsSpawned = true;
                 }
                 break;
         }
     }
-    private void GiveFood(PlantElement other, float percentage, float deltaTime)
+    private void GiveFood(PlantElement other, float amount)
     {
-        other.RecieveFood(foodStore * deltaTime * percentage);
-        foodStore -= foodStore * deltaTime * percentage;
+        if (foodStore > amount)
+        {
+            other.RecieveFood(amount);
+            foodStore -= amount;
+        }
     }
     private void RecieveFood(float amount)
     {
@@ -146,51 +156,59 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     protected abstract void Grow(float deltaTime);
     protected abstract void ShowSymptoms(int compoundIndex, bool isExcess);
     protected abstract void HideSymptoms();
-    protected abstract void Offspring();
-    protected abstract void Morph();
+    protected abstract void Output();
     #endregion
 
-    #region UserInterface
+    #region User Interface
     protected void ExchangeCompoundsWithSustainer(float deltaTime, float multiplier = 1f)
     {
-        status.ExchangeCompounds(sustainer, deltaTime, multiplier);
+        status.ExchangeCompounds(sustainer, true, deltaTime, multiplier);
     }
-    protected void ExchangeCompoundsWithOffspring(float deltaTime, float multiplier = 1f)
+    protected void ExchangeCompoundsWithOutput(float deltaTime, float multiplier = 1f)
     {
-        if (lifeCycle == LifeCycle.offspring && growth >= requiredOffspringGrowth)
-            status.ExchangeCompounds(output, deltaTime, multiplier);
+        if (lifeCycle == LifeCycle.Output && growth >= requiredOutputGrowth)
+            status.ExchangeCompounds(output, false, deltaTime, multiplier);
     }
-    protected void GiveFoodToSustainer(float percentage, float deltaTime)
+    protected void GiveFoodToSustainer(float amount)
     {
-        if (sustainer is PlantElement)
+        if (sustainer is PlantElement element)
         {
-            GiveFood(sustainer as PlantElement, percentage, deltaTime);
+            GiveFood(element, amount);
         }
         else
         {
             Debug.LogError("Cannot transfer food (Starch) with a non plant sustainer (Soil/Pot are non plant sustainers)\n GameObject: " + gameObject.name);
         }
     }
-    protected void GiveFoodToOffspring(float percentage, float deltaTime)
+    protected void GiveFoodToOffspring(float amount)
     {
-        GiveFood(output, percentage, deltaTime);
+        GiveFood(output, amount);
     }
     protected void PassEverthingToOutput()
     {
         List<float> deltaContent = GetContent();
-        output.UpdateContent(deltaContent);
         output.RecieveFood(foodStore);
+        foodStore = 0f;
+        output.UpdateContent(deltaContent);
+        for (int i = 0; i < deltaContent.Count; i++)
+            deltaContent[i] *= -1f;
+        UpdateContent(deltaContent);
     }
-    protected void Photosynthesis(float deltaTime)
+    protected void Photosynthesis(float inputMineralsAmount, float inputWaterAmount, float outputFoodAmount, float deltaTime)
     {
-        if (GetContent(0) >= 0.05f * deltaTime &&
-            GetContent(1) >= 0.05f * deltaTime &&
-            GetContent(3) >= 0.05f * deltaTime) 
+        float mineralAmount = inputMineralsAmount * deltaTime;
+        float waterAmount = inputWaterAmount * deltaTime;
+
+        if (GetContent(0) >= waterAmount &&
+            GetContent(1) >= mineralAmount &&
+            GetContent(2) >= mineralAmount &&
+            GetContent(3) >= mineralAmount) 
         {
-            foodStore += 0.04f * (1f + growth) * deltaTime;
-            UpdateContent(0, -0.05f * deltaTime);
-            UpdateContent(1, -0.05f * deltaTime);
-            UpdateContent(3, -0.05f * deltaTime);
+            foodStore += outputFoodAmount * (1f + growth) * deltaTime;
+            UpdateContent(0, -waterAmount);
+            UpdateContent(1, -mineralAmount);
+            UpdateContent(2, -mineralAmount);
+            UpdateContent(3, -mineralAmount);
         }
     }   
     #endregion

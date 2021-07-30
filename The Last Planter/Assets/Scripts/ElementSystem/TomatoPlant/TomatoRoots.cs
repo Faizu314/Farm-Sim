@@ -7,7 +7,7 @@ public class TomatoRoots : PlantElement
     protected override void Function(float deltaTime)
     {
         ExchangeCompoundsWithSustainer(deltaTime);
-        ExchangeCompoundsWithOffspring(deltaTime);
+        ExchangeCompoundsWithOutput(deltaTime);
     }
     protected override void Grow(float deltaTime)
     {
@@ -16,17 +16,13 @@ public class TomatoRoots : PlantElement
     }
     protected override void ShowSymptoms(int compoundIndex, bool isExcess)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(gameObject.name + " have inappropriate ammounts of: " + compoundIndex + ", " + isExcess);
     }
     protected override void HideSymptoms()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(gameObject.name + " mineral levels restored");
     }
-    protected override void Morph()
-    {
-        throw new System.NotImplementedException();
-    }
-    protected override void Offspring()
+    protected override void Output()
     {
         output.Initialize(this);
         output.gameObject.SetActive(true);

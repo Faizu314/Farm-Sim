@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2959301003117573523, guid: a1899bb84b8e6ac44bca0c093c4ca504, type: 3}
       propertyPath: compoundContents.Array.data[3]
-      value: 2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2986132837686635073, guid: a1899bb84b8e6ac44bca0c093c4ca504, type: 3}
       propertyPath: m_RootOrder
@@ -403,6 +403,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: initialFoodStore
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.surfaceArea
+      value: 0.413
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: respireFoodConsumption
       value: 0.02
       objectReference: {fileID: 0}
@@ -410,21 +418,113 @@ PrefabInstance:
       propertyPath: respireWaterConsumption
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.absorptionStrength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[0].excessLevel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[1].excessLevel
+      value: 3.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[2].excessLevel
+      value: 2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[3].excessLevel
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[4].excessLevel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[0].deficiencyLevel
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[1].deficiencyLevel
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[2].deficiencyLevel
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[3].deficiencyLevel
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175002367881843518, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[4].deficiencyLevel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: lifeCycle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: healthIncrement
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: initialFoodStore
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: status.surfaceArea
-      value: 0.323
+      value: 0.292
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: requiredOutputGrowth
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: status.absorptionStrength
-      value: 0.288
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[0].excessLevel
+      value: 8.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[1].excessLevel
+      value: 2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[2].excessLevel
+      value: 2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[3].excessLevel
+      value: 2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[4].excessLevel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[0].deficiencyLevel
+      value: 1.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[1].deficiencyLevel
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[2].deficiencyLevel
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[3].deficiencyLevel
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289332776701355090, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[4].deficiencyLevel
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5781104852214630048, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: m_RootOrder
@@ -471,20 +571,72 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: lifeCycle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: healthIncrement
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: initialFoodStore
-      value: 5
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.surfaceArea
+      value: 0.304
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: requiredOutputGrowth
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[0].excessLevel
+      value: 9.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[1].excessLevel
+      value: 1.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[2].excessLevel
+      value: 2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[3].excessLevel
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[4].excessLevel
+      value: 3.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[0].deficiencyLevel
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[1].deficiencyLevel
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[2].deficiencyLevel
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[3].deficiencyLevel
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697280304049792199, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[4].deficiencyLevel
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: functionPeriod
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: growthIncrement
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: healthIncrement
@@ -492,7 +644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: initialFoodStore
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: respireConsumption
@@ -503,12 +655,68 @@ PrefabInstance:
       value: 0.107
       objectReference: {fileID: 0}
     - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: requiredOutputGrowth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: growthFoodConsumption
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: requiredMorphingGrowth
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: respireFoodConsumption
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: requiredOffspringGrowth
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.absorptionStrength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[0].excessLevel
+      value: 6.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[1].excessLevel
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[2].excessLevel
+      value: 2.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[3].excessLevel
+      value: 2.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[4].excessLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[0].deficiencyLevel
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[1].deficiencyLevel
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[2].deficiencyLevel
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[3].deficiencyLevel
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910754439351693547, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
+      propertyPath: status.compoundAssociations.Array.data[4].deficiencyLevel
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8599540311872124815, guid: 5649a7252ea57d641aeefedabd2cfa4d, type: 3}
       propertyPath: m_Name

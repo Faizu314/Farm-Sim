@@ -31,7 +31,7 @@ public class PlantStatus
         Initialize();
     }
 
-    public void ExchangeCompounds(ICompoundChannel other, float deltaTime, float areaMultiplier = 1f)
+    public void ExchangeCompounds(ICompoundChannel other, bool fromSustainer, float deltaTime, float areaMultiplier = 1f)
     {
         List<float> otherCompoundContents = other.GetContent();
         if (CompoundTransport.GetWaterSolubility(otherCompoundContents) < CompoundTransport.MIN_WATER_SOLUBILITY)
@@ -42,7 +42,7 @@ public class PlantStatus
         for (int i = 1; i < compoundContents.Count; i++)
         {
             amount = CompoundTransport.Diffuse(otherCompoundContents[i], compoundContents[i], totalArea);
-            if (amount < 0.001f && absorptionStrength > 0f)
+            if (fromSustainer && amount < 0.01f && absorptionStrength > 0f)
             {
                 amount = CompoundTransport.ActiveTransport(otherCompoundContents[i], compoundContents[i], absorptionStrength, totalArea);
             }
@@ -62,15 +62,37 @@ public class PlantStatus
     }
     public float GetWellBeing()
     {
-        //Checks the excess or lack of minerals and returns a float that represents how good the plantElement is doing
-        return 0f;
+        float wellBeing = 0f;
+        for (int i = 0; i < compoundContents.Count; i++)
+        {
+            float content = compoundContents[i];
+            float minLevel = compoundAssociations[i].deficiencyLevel;
+            float maxLevel = compoundAssociations[i].excessLevel;
+            if (InRange(content, minLevel, maxLevel))
+                wellBeing += 0.1f;
+            else
+                wellBeing -= 0.2f;
+        }
+        return wellBeing;
     }
     public (int, bool) GetSymptom()
     {
-        //If health is low this will check which compound is in excess and return it
+        for (int i = 0; i < compoundContents.Count; i++)
+        {
+            float content = compoundContents[i];
+            float minLevel = compoundAssociations[i].deficiencyLevel;
+            float maxLevel = compoundAssociations[i].excessLevel;
+            if (!InRange(content, minLevel, maxLevel))
+                return (i, content > maxLevel);
+        }
         return (-1, false);
     }
+    private bool InRange(float amount, float min, float max)
+    {
+        return amount <= max && amount > min;
+    }
 
+    #region ICompoundChannel
     public List<float> GetContent()
     {
         return compoundContents;
@@ -83,14 +105,15 @@ public class PlantStatus
     {
         for (int i = 0; i < deltaContent.Count; i++)
         {
-            compoundContents[i] += deltaContent[i];
+            compoundContents[i] += deltaContent[i]; 
         }
     }
     public void UpdateContent(int index, float deltaContent)
     {
-        compoundContents[index] -= deltaContent;
+        compoundContents[index] += deltaContent;
     }
-  
+    #endregion
+
     [System.Serializable] public struct CompoundAssociation
     {
         public string compoundName;

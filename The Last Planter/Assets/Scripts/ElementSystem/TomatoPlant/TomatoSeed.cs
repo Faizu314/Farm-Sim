@@ -13,21 +13,17 @@ public class TomatoSeed : PlantElement
     }
     protected override void ShowSymptoms(int compoundIndex, bool isExcess)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(gameObject.name + " have inappropriate ammounts of: " + compoundIndex + ", " + isExcess);
     }
     protected override void HideSymptoms()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(gameObject.name + " mineral levels restored");
     }
-    protected override void Morph()
+    protected override void Output()
     {
         output.Initialize(sustainer);
         output.gameObject.SetActive(true);
         PassEverthingToOutput();
         gameObject.SetActive(false);
-    }
-    protected override void Offspring()
-    {
-        throw new System.NotImplementedException();
     }
 }
