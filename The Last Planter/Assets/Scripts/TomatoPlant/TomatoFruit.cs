@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TomatoRoots : PlantElement
+public class TomatoFruit : PlantElement
 {
+    [Header("Rotting")]
+    [SerializeField] private float rottingGrowth;
+
+    protected override void OnInitialize() { }
     protected override void Function(float deltaTime)
     {
-        ExchangeCompoundsWithSustainer(deltaTime);
-        ExchangeCompoundsWithOutput(deltaTime);
+        ExchangeCompounds(sustainer, deltaTime);
+        if (growth >= rottingGrowth)
+            Rot(deltaTime);
     }
     protected override void Grow(float deltaTime)
     {
         foodStore -= growthFoodConsumption * deltaTime;
-        growth += growthIncrement * deltaTime;
+        growth += DebugFloats.growthIncrement * deltaTime;
     }
     protected override void ShowSymptoms(int compoundIndex, bool isExcess)
     {
@@ -24,7 +29,15 @@ public class TomatoRoots : PlantElement
     }
     protected override void Output()
     {
-        output.Initialize(this);
-        output.gameObject.SetActive(true);
+        throw new System.NotImplementedException();
+    }
+    protected override bool ShouldOutput()
+    {
+        return false;
+    }
+
+    private void Rot(float deltaTime)
+    {
+        health -= DebugFloats.healthIncrement * deltaTime;
     }
 }

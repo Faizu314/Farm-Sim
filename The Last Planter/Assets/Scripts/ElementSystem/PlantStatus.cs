@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using PlantTransport;
+using PlantSimulation;
 
 [System.Serializable]
 public class PlantStatus
@@ -8,13 +8,10 @@ public class PlantStatus
     [SerializeField] private List<CompoundAssociation> compoundAssociations;
     [SerializeField] [Range(0.01f, 1f)] private float surfaceArea;
     [SerializeField] [Range(0f, 1f)] private float absorptionStrength;
-    [SerializeField] private float maxOsmosis;
+    [SerializeField] [Range(0.01f, 1f)] private float maxOsmosis;
 
     public List<float> compoundContents;
     private List<float> deltaContents;
-
-    private enum Minerals { H2o, N, Po4, K, Ca };
-
 
     public void Initialize()
     {
@@ -34,19 +31,22 @@ public class PlantStatus
     public void ExchangeCompounds(ICompoundChannel other, bool fromSustainer, float deltaTime, float areaMultiplier = 1f)
     {
         List<float> otherCompoundContents = other.GetContent();
-        if (CompoundTransport.GetWaterSolubility(otherCompoundContents) < CompoundTransport.MIN_WATER_SOLUBILITY)
+        float otherWaterSolubility = Transport.GetWaterSolubility(otherCompoundContents);
+        float myWaterSolubility = Transport.GetWaterSolubility(GetContent());
+
+        if (otherWaterSolubility < Transport.MIN_WATER_SOLUBILITY && myWaterSolubility < Transport.MIN_WATER_SOLUBILITY)
             return;
+
         float totalArea = surfaceArea * areaMultiplier;
-        float amount;
+        float mineralAmount;
 
         for (int i = 1; i < compoundContents.Count; i++)
         {
-            amount = CompoundTransport.Diffuse(otherCompoundContents[i], compoundContents[i], totalArea);
-            if (fromSustainer && amount < 0.01f && absorptionStrength > 0f)
-            {
-                amount = CompoundTransport.ActiveTransport(otherCompoundContents[i], compoundContents[i], absorptionStrength, totalArea);
-            }
-            deltaContents[i] = amount * deltaTime;
+            mineralAmount = Transport.Diffuse(otherCompoundContents[i], compoundContents[i], totalArea);
+            mineralAmount = Transport.ConserveCompound(otherCompoundContents[i], compoundContents[i], mineralAmount);
+            if (fromSustainer && mineralAmount < 0.01f && absorptionStrength > 0f)
+                mineralAmount = Transport.ActiveTransport(otherCompoundContents[i], compoundContents[i], absorptionStrength, totalArea);
+            deltaContents[i] = mineralAmount * deltaTime;
         }
         for (int i = 1; i < compoundContents.Count; i++)
         {
@@ -54,10 +54,10 @@ public class PlantStatus
             deltaContents[i] *= -1f;
         }
 
-        amount = CompoundTransport.Osmosis(otherCompoundContents[0], compoundContents[0], totalArea, maxOsmosis) * deltaTime;
-        compoundContents[0] += amount;
-        deltaContents[0] = amount * -1f;
-
+        float waterAmount = Transport.Osmosis(otherWaterSolubility, myWaterSolubility, totalArea, maxOsmosis) * deltaTime;
+        waterAmount = Transport.ConserveCompound(otherCompoundContents[0], compoundContents[0], waterAmount);
+        compoundContents[0] += waterAmount;
+        deltaContents[0] = waterAmount * -1f;
         other.UpdateContent(deltaContents);
     }
     public float GetWellBeing()
@@ -69,9 +69,12 @@ public class PlantStatus
             float minLevel = compoundAssociations[i].deficiencyLevel;
             float maxLevel = compoundAssociations[i].excessLevel;
             if (InRange(content, minLevel, maxLevel))
-                wellBeing += 0.1f;
+                wellBeing += 0.4f;
             else
-                wellBeing -= 0.2f;
+            {
+                wellBeing = -1f;
+                break;
+            }
         }
         return wellBeing;
     }
@@ -89,7 +92,7 @@ public class PlantStatus
     }
     private bool InRange(float amount, float min, float max)
     {
-        return amount <= max && amount > min;
+        return amount <= max && amount >= min;
     }
 
     #region ICompoundChannel
@@ -105,7 +108,7 @@ public class PlantStatus
     {
         for (int i = 0; i < deltaContent.Count; i++)
         {
-            compoundContents[i] += deltaContent[i]; 
+            compoundContents[i] += deltaContent[i];
         }
     }
     public void UpdateContent(int index, float deltaContent)
@@ -114,7 +117,8 @@ public class PlantStatus
     }
     #endregion
 
-    [System.Serializable] public struct CompoundAssociation
+    [System.Serializable]
+    public struct CompoundAssociation
     {
         public string compoundName;
         [Range(0f, 10f)] public float excessLevel;
