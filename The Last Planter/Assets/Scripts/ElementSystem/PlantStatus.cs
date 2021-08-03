@@ -54,7 +54,7 @@ public class PlantStatus
             deltaContents[i] *= -1f;
         }
 
-        float waterAmount = Transport.Osmosis(otherWaterSolubility, myWaterSolubility, totalArea, maxOsmosis) * deltaTime;
+        float waterAmount = Transport.Osmosis(otherWaterSolubility, myWaterSolubility, maxOsmosis) * deltaTime;
         waterAmount = Transport.ConserveCompound(otherCompoundContents[0], compoundContents[0], waterAmount);
         compoundContents[0] += waterAmount;
         deltaContents[0] = waterAmount * -1f;
@@ -89,6 +89,13 @@ public class PlantStatus
                 return (i, content > maxLevel);
         }
         return (-1, false);
+    }
+    public bool HasSymptom(int compoundIndex)
+    {
+        float content = compoundContents[compoundIndex];
+        float minLevel = compoundAssociations[compoundIndex].deficiencyLevel;
+        float maxLevel = compoundAssociations[compoundIndex].excessLevel;
+        return InRange(content, minLevel, maxLevel);
     }
     private bool InRange(float amount, float min, float max)
     {

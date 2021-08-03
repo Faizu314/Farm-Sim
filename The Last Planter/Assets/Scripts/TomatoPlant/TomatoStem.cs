@@ -17,6 +17,7 @@ public class TomatoStem : PlantElement
     private List<PlantElement> outputLeaves = new List<PlantElement>();
     private float diffMultiplier;
     private int outputLeavesSpawned;
+    private float heightAtprevLeaf;
 
     protected override void OnInitialize()
     {
@@ -57,7 +58,7 @@ public class TomatoStem : PlantElement
             return false;
         if (foodStore < requiredFoodPerLeaf)
             return false;
-        return transform.position.y >= requiredHeightPerLeaf * (outputLeavesSpawned + 1);
+        return transform.position.y >= heightAtprevLeaf + requiredHeightPerLeaf;
     }
     protected override void Output()
     {
@@ -65,6 +66,7 @@ public class TomatoStem : PlantElement
         Transform leaves = outputLeaves[outputLeavesSpawned].GetComponent<Transform>();
 
         leaves.position = transform.position;
+        heightAtprevLeaf = transform.position.y;
         leaves.Translate(new Vector3(0.01f, 0.05f, 0));
         outputLeaves[outputLeavesSpawned].Initialize(this, environment);
         outputLeavesSpawned++;

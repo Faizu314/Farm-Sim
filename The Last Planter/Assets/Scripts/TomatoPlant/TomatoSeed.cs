@@ -13,12 +13,7 @@ public class TomatoSeed : PlantElement
     [SerializeField] private GameObject rootsPrefab;
     [SerializeField] private float requiredOutputGrowth;
 
-    private Transform seed;
-
-    protected override void OnInitialize()
-    {
-        seed = GetComponent<Transform>();
-    }
+    protected override void OnInitialize() { }
     protected override void Function(float deltaTime)
     {
         ExchangeCompounds(sustainer, deltaTime);
@@ -50,7 +45,9 @@ public class TomatoSeed : PlantElement
 
     private bool CanGerminate()
     {
-        float currSunlight = Sunlight.SunlightAtDepth(sunlightIntensity, seed.position.y);
+        if (!IsContentAppropriate(H2O))
+            return false;
+        float currSunlight = Sunlight.SunlightAtDepth(sunlightIntensity, transform.position.y);
         if (soilHardness >= minSoilHardness)
             if (currSunlight >= minSunlightIntensity && currSunlight <= maxSunlightIntensity)
                 return true;

@@ -117,17 +117,11 @@ MonoBehaviour:
     compoundContents: []
   functionPeriod: 1
   growPeriod: 2
-  initialFoodStore: 2
-  simulationSpeed: 2
-  respireFoodConsumption: 0.01
-  respireWaterConsumption: 0.05
-  evaporationRate: 0
+  initialFoodStore: 6
   growthFoodConsumption: 0.05
-  growthIncrement: 0.01
-  healthIncrement: 1
   minSoilHardness: 1
   minSunlightIntensity: 0
   maxSunlightIntensity: 1
   germinationWaterConsumption: 0.05
   rootsPrefab: {fileID: 7533686680101602293, guid: 1ac79bec0e00a6044ae3f99e9d2d0355, type: 3}
-  requiredOutputGrowth: 0.2
+  requiredOutputGrowth: 1

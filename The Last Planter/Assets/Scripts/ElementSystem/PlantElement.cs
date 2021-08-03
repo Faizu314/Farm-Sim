@@ -109,7 +109,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     }
     private void Respiration(float deltaTime)
     {
-        if (foodStore >= DebugFloats.respireFoodConsumption * deltaTime && 
+        if (foodStore >= DebugFloats.respireFoodConsumption * deltaTime &&
             GetContent(H2O) >= DebugFloats.respireWaterConsumption * deltaTime)
         {
             foodStore -= DebugFloats.respireFoodConsumption * deltaTime;
@@ -188,6 +188,10 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         for (int i = 0; i < deltaContent.Count; i++)
             deltaContent[i] *= -1f;
         UpdateContent(deltaContent);
+    }
+    protected bool IsContentAppropriate(int compoundIndex)
+    {
+        return status.HasSymptom(compoundIndex);
     }
     #endregion
 

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace PlantSimulation
 {
@@ -11,12 +10,9 @@ namespace PlantSimulation
             float amount = (otherContent - myContent) / (otherContent + myContent + 0.01f) * surfaceArea;
             return amount;
         }
-        public static float Osmosis(float otherWaterSolubility, float myWaterSolubility, float surfaceArea, float maxOsmosis)
+        public static float Osmosis(float otherWaterSolubility, float myWaterSolubility, float maxOsmosis)
         {
-            float amount = Diffuse(otherWaterSolubility, myWaterSolubility, surfaceArea);
-            if (Mathf.Abs(amount) > maxOsmosis)
-                amount = Mathf.Sign(amount) * maxOsmosis;
-            return amount;
+            return Diffuse(otherWaterSolubility, myWaterSolubility, maxOsmosis);
         }
         public static float GetWaterSolubility(List<float> mineralContent)
         {
