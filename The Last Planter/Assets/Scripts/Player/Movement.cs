@@ -12,9 +12,10 @@ public class Movement : MonoBehaviour
     [SerializeField] private float maxCamRotation;
 
     [Header("Movement Settings")]
-    [SerializeField] [Range(0f, 1f)] private float movementSpeed;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] [Range(0f, 100f)] private float movementSpeed;
 
-    private float rawMouseDz = 0f;
+    private float rawMouseDx = 0f;
     private float rawMouseDy = 0f;
     private float rawCamRotationX = 0f;
 
@@ -33,11 +34,19 @@ public class Movement : MonoBehaviour
         PlayerMovement();
         CamMovement();
     }
+    private void FixedUpdate()
+    {
+        moveDirection.x = rawMoveX;
+        moveDirection.z = rawMoveZ;
+        if (rawMoveX == 0f && rawMoveZ == 0f)
+            moveDirection /= 1.414f;
+        rb.velocity = transform.right * rawMoveX + transform.forward * rawMoveZ;
+    }
 
     private void DesktopInput()
     {
         rawMouseDy = Input.GetAxis("Mouse Y") * sensitivity;
-        rawMouseDz = Input.GetAxis("Mouse X") * sensitivity;
+        rawMouseDx = Input.GetAxis("Mouse X") * sensitivity;
         rawMoveX = Input.GetAxis("Horizontal") * movementSpeed;
         rawMoveZ = Input.GetAxis("Vertical") * movementSpeed;
     }
@@ -46,7 +55,7 @@ public class Movement : MonoBehaviour
         if (touch.position.x > 0.5f)
         {
             rawMouseDy = touch.deltaPosition.y * sensitivity;
-            rawMouseDz = touch.deltaPosition.x * sensitivity;
+            rawMouseDx = touch.deltaPosition.x * sensitivity;
         }
         else
         {
@@ -57,13 +66,20 @@ public class Movement : MonoBehaviour
 
     private void PlayerMovement()
     {
-        moveDirection.x = rawMoveX;
-        moveDirection.z = rawMoveZ;
-        if (rawMoveX == 0f && rawMoveZ == 0f)
-            moveDirection /= 1.414f;
-        transform.Translate(moveDirection);
+        rawPlayerRotationZ += rawMouseDx;
 
-        transform.Rotate(Vector3.up * rawMouseDz);
+        float currentRotation = transform.eulerAngles.y;
+
+        float rotationDifference = Mathf.Abs(rawPlayerRotationZ - currentRotation);
+        if (rotationDifference > 180f)
+        {
+            float correction = (int)((rotationDifference - 180) / 360) + 360;
+            correction *= Mathf.Sign(rawPlayerRotationZ - currentRotation) * -1f;
+            rawPlayerRotationZ += correction;
+        }
+        currentRotation = Mathf.Lerp(currentRotation, rawPlayerRotationZ, cameraSmoothness);
+
+        transform.eulerAngles = Vector3.up * currentRotation;
     }
     private void CamMovement()
     {
@@ -77,6 +93,6 @@ public class Movement : MonoBehaviour
             currentRotation *= -1f;
         currentRotation = Mathf.Lerp(currentRotation, rawCamRotationX, cameraSmoothness);
 
-        cam.transform.localEulerAngles = new Vector3(-currentRotation, 0, 0);
+        cam.transform.localEulerAngles = Vector3.left * currentRotation;
     }
 }
