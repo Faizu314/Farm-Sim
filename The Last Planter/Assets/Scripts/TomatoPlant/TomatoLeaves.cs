@@ -14,8 +14,13 @@ public class TomatoLeaves : PlantElement
     private bool hasGivenFruit;
     private PlantElement fruit;
 
-    protected override void OnInitialize() {
+    protected override void OnInitialize()
+    {
         hasGivenFruit = false;
+    }
+    protected override void OnUpdate() 
+    {
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * Mathf.Clamp(growth, 0f, 1f), Time.deltaTime);
     }
     protected override void Function(float deltaTime)
     {
@@ -27,8 +32,10 @@ public class TomatoLeaves : PlantElement
     protected override void Grow(float deltaTime)
     {
         if (foodStore >= growthFoodConsumption * deltaTime)
+        {
             foodStore -= growthFoodConsumption * deltaTime;
-        growth += DebugFloats.growthIncrement * deltaTime;
+            growth += DebugFloats.growthIncrement * deltaTime;
+        }
     }
     protected override void HideSymptoms()
     {
@@ -40,14 +47,13 @@ public class TomatoLeaves : PlantElement
     }
     protected override bool ShouldOutput()
     {
-        return growth >= requiredOutputGrowth && !hasGivenFruit;
+        return outputFruitPrefab != null && growth >= requiredOutputGrowth && !hasGivenFruit;
     }
     protected override void Output()
     {
         GameObject fruitObj = Instantiate(outputFruitPrefab);
         fruit = fruitObj.GetComponent<PlantElement>();
-        fruit.Initialize(this, environment);
-        fruitObj.GetComponent<Transform>().position = transform.position;
+        fruit.Initialize(this, environment, parentObject);
         hasGivenFruit = true;
     }
 

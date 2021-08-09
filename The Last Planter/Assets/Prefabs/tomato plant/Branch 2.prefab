@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2002033702443088444
+--- !u!1 &2188937487618201899
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6953828639674058555}
-  - component: {fileID: 6204774845745033788}
-  - component: {fileID: 7547125920500701498}
-  - component: {fileID: 5065164402340656727}
+  - component: {fileID: 2125003050045535764}
+  - component: {fileID: 8301850182408231437}
+  - component: {fileID: 954920418981113317}
+  - component: {fileID: -1550817716872001137}
   m_Layer: 0
-  m_Name: Seed
+  m_Name: Branch 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6953828639674058555
+--- !u!4 &2125003050045535764
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002033702443088444}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_GameObject: {fileID: 2188937487618201899}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.101808, y: 4.317468, z: -0.227687}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6204774845745033788
+--- !u!33 &8301850182408231437
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002033702443088444}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7547125920500701498
+  m_GameObject: {fileID: 2188937487618201899}
+  m_Mesh: {fileID: -1705196031646743389, guid: 1e83b9e68b96e9c4f8a69c161133ef82, type: 3}
+--- !u!23 &954920418981113317
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002033702443088444}
+  m_GameObject: {fileID: 2188937487618201899}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d77ef579a9935974f9498bbd951de7fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,46 +82,43 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5065164402340656727
+--- !u!114 &-1550817716872001137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002033702443088444}
+  m_GameObject: {fileID: 2188937487618201899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c674754efca2784898ec50b6d077042, type: 3}
+  m_Script: {fileID: 11500000, guid: d320de280c122ed478a5c85097b925b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 1
       deficiencyLevel: 0.05
     - compoundName: Nitrogen
       excessLevel: 1
-      deficiencyLevel: 0.05
+      deficiencyLevel: 0
     - compoundName: Phosphorous
       excessLevel: 1
-      deficiencyLevel: 0.05
+      deficiencyLevel: 0
     - compoundName: Potassium
       excessLevel: 1
-      deficiencyLevel: 0.05
-    - compoundName: Calcium
-      excessLevel: 10
       deficiencyLevel: 0
-    surfaceArea: 0.107
+    - compoundName: Calcium
+      excessLevel: 0.3
+      deficiencyLevel: 0
+    surfaceArea: 0.179
     absorptionStrength: 0
-    maxOsmosis: 0.1
+    maxOsmosis: 0.168
     compoundContents: []
-  functionPeriod: 1
-  growPeriod: 2
-  initialFoodStore: 6
-  growthFoodConsumption: 0.05
-  minSoilHardness: 1
-  minSunlightIntensity: 0
-  maxSunlightIntensity: 1
-  germinationWaterConsumption: 0.05
-  rootsPrefab: {fileID: 7533686680101602293, guid: 1ac79bec0e00a6044ae3f99e9d2d0355, type: 3}
-  requiredOutputGrowth: 1
+  initialFoodStore: 0
+  growthFoodConsumption: 0.1
+  inputMineralsAmount: 0.01
+  inputWaterAmount: 0.02
+  outputFoodAmount: 0.2
+  outputFruitPrefab: {fileID: 0}
+  requiredOutputGrowth: 0

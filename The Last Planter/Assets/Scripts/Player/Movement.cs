@@ -21,7 +21,6 @@ public class Movement : MonoBehaviour
 
     private float rawMoveX = 0f;
     private float rawMoveZ = 0f;
-    private Vector3 moveDirection;
     private float rawPlayerRotationZ = 0f;
 
     Touch touch = new Touch();
@@ -31,24 +30,20 @@ public class Movement : MonoBehaviour
             DesktopInput();
         else if (SystemInfo.deviceType == DeviceType.Handheld)
             MobileInput();
-        PlayerMovement();
-        CamMovement();
+        PlayerRotation();
+        CamRotation();
     }
     private void FixedUpdate()
-    {
-        moveDirection.x = rawMoveX;
-        moveDirection.z = rawMoveZ;
-        if (rawMoveX == 0f && rawMoveZ == 0f)
-            moveDirection /= 1.414f;
-        rb.velocity = transform.right * rawMoveX + transform.forward * rawMoveZ;
+    {        
+        PlayerMovement();
     }
 
     private void DesktopInput()
     {
-        rawMouseDy = Input.GetAxis("Mouse Y") * sensitivity;
-        rawMouseDx = Input.GetAxis("Mouse X") * sensitivity;
-        rawMoveX = Input.GetAxis("Horizontal") * movementSpeed;
-        rawMoveZ = Input.GetAxis("Vertical") * movementSpeed;
+        rawMouseDy += Input.GetAxis("Mouse Y") * sensitivity;
+        rawMouseDx += Input.GetAxis("Mouse X") * sensitivity;
+        rawMoveX += Input.GetAxis("Horizontal") * movementSpeed;
+        rawMoveZ += Input.GetAxis("Vertical") * movementSpeed;
     }
     private void MobileInput()
     {
@@ -63,10 +58,16 @@ public class Movement : MonoBehaviour
             rawMoveZ = touch.deltaPosition.x * sensitivity;
         }
     }
-
     private void PlayerMovement()
     {
+        float divider = (rawMoveX != 0f && rawMoveZ != 0f) ? 1.414f : 1f;
+        rb.AddForce((transform.right * rawMoveX + transform.forward * rawMoveZ) / divider);
+        rawMoveX = rawMoveZ = 0f;
+    }
+    private void PlayerRotation()
+    {
         rawPlayerRotationZ += rawMouseDx;
+        rawMouseDx = 0f;
 
         float currentRotation = transform.eulerAngles.y;
 
@@ -81,9 +82,10 @@ public class Movement : MonoBehaviour
 
         transform.eulerAngles = Vector3.up * currentRotation;
     }
-    private void CamMovement()
+    private void CamRotation()
     {
         rawCamRotationX += rawMouseDy;
+        rawMouseDy = 0f;
         rawCamRotationX = Mathf.Clamp(rawCamRotationX, minCamRotation, maxCamRotation);
 
         float currentRotation = cam.transform.eulerAngles.x;

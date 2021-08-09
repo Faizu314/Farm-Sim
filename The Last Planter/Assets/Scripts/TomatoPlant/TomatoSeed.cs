@@ -14,6 +14,8 @@ public class TomatoSeed : PlantElement
     [SerializeField] private float requiredOutputGrowth;
 
     protected override void OnInitialize() { }
+    protected override void OnUpdate() { }
+
     protected override void Function(float deltaTime)
     {
         ExchangeCompounds(sustainer, deltaTime);
@@ -38,7 +40,7 @@ public class TomatoSeed : PlantElement
     protected override void Output()
     {
         PlantElement rootsPE = Instantiate(rootsPrefab).GetComponent<PlantElement>();
-        rootsPE.Initialize(sustainer, environment);
+        rootsPE.Initialize(sustainer, environment, parentObject);
         PassEverthing(rootsPE);
         Destroy(gameObject);
     }

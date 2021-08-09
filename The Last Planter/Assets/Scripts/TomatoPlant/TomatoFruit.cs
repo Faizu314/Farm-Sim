@@ -8,6 +8,7 @@ public class TomatoFruit : PlantElement
     [SerializeField] private float rottingGrowth;
 
     protected override void OnInitialize() { }
+    protected override void OnUpdate() { }
     protected override void Function(float deltaTime)
     {
         ExchangeCompounds(sustainer, deltaTime);
@@ -16,8 +17,11 @@ public class TomatoFruit : PlantElement
     }
     protected override void Grow(float deltaTime)
     {
-        foodStore -= growthFoodConsumption * deltaTime;
-        growth += DebugFloats.growthIncrement * deltaTime;
+        if (foodStore >= growthFoodConsumption * deltaTime)
+        {
+            foodStore -= growthFoodConsumption * deltaTime;
+            growth += DebugFloats.growthIncrement * deltaTime;
+        }
     }
     protected override void ShowSymptoms(int compoundIndex, bool isExcess)
     {

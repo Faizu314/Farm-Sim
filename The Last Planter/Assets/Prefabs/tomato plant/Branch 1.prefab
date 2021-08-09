@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8600309116096080464
+--- !u!1 &1524420430235920370
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2986132837686635073}
-  - component: {fileID: 464485849101595295}
-  - component: {fileID: 1821095348882511641}
-  - component: {fileID: 2959301003117573523}
+  - component: {fileID: 7802470592101011255}
+  - component: {fileID: 2860620658390443174}
+  - component: {fileID: 8617861350323341198}
+  - component: {fileID: 8718391069444383803}
   m_Layer: 0
-  m_Name: Soil
+  m_Name: Branch 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2986132837686635073
+--- !u!4 &7802470592101011255
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8600309116096080464}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
+  m_GameObject: {fileID: 1524420430235920370}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.054181, y: 1.8824437, z: 0.135685}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &464485849101595295
+--- !u!33 &2860620658390443174
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8600309116096080464}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1821095348882511641
+  m_GameObject: {fileID: 1524420430235920370}
+  m_Mesh: {fileID: 2257621098689611155, guid: 1e83b9e68b96e9c4f8a69c161133ef82, type: 3}
+--- !u!23 &8617861350323341198
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8600309116096080464}
+  m_GameObject: {fileID: 1524420430235920370}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d77ef579a9935974f9498bbd951de7fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,15 +82,43 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2959301003117573523
+--- !u!114 &8718391069444383803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8600309116096080464}
+  m_GameObject: {fileID: 1524420430235920370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9225cedbe925614a97716cf49ca9fa2, type: 3}
+  m_Script: {fileID: 11500000, guid: d320de280c122ed478a5c85097b925b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status:
+    compoundAssociations:
+    - compoundName: Water
+      excessLevel: 1
+      deficiencyLevel: 0.05
+    - compoundName: Nitrogen
+      excessLevel: 1
+      deficiencyLevel: 0
+    - compoundName: Phosphorous
+      excessLevel: 1
+      deficiencyLevel: 0
+    - compoundName: Potassium
+      excessLevel: 1
+      deficiencyLevel: 0
+    - compoundName: Calcium
+      excessLevel: 0.3
+      deficiencyLevel: 0
+    surfaceArea: 0.179
+    absorptionStrength: 0
+    maxOsmosis: 0.168
+    compoundContents: []
+  initialFoodStore: 0
+  growthFoodConsumption: 0.1
+  inputMineralsAmount: 0.01
+  inputWaterAmount: 0.02
+  outputFoodAmount: 0.2
+  outputFruitPrefab: {fileID: 1094684630041074656, guid: 028b101816efc2049bf01205e0017039, type: 3}
+  requiredOutputGrowth: 0.2

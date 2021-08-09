@@ -13,6 +13,8 @@ public class TomatoRoots : PlantElement
     {
         outputSpawned = false;
     }
+    protected override void OnUpdate() { }
+
     protected override void Function(float deltaTime)
     {
         ExchangeCompounds(sustainer, deltaTime);
@@ -22,8 +24,10 @@ public class TomatoRoots : PlantElement
     protected override void Grow(float deltaTime)
     {
         if (foodStore >= growthFoodConsumption * deltaTime)
+        {
             foodStore -= growthFoodConsumption * deltaTime;
-        growth += DebugFloats.growthIncrement * deltaTime;
+            growth += DebugFloats.growthIncrement * deltaTime;
+        }
     }
     protected override void ShowSymptoms(int compoundIndex, bool isExcess)
     {
@@ -40,7 +44,7 @@ public class TomatoRoots : PlantElement
     protected override void Output()
     {
         output = Instantiate(outputPrefab).GetComponent<PlantElement>();
-        output.Initialize(this, environment);
+        output.Initialize(this, environment, parentObject);
         outputSpawned = true;
     }
 }

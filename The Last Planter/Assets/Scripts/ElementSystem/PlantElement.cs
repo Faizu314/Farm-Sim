@@ -12,11 +12,8 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     [Header("Plant Properties")]
 
     [SerializeField] private PlantStatus status;
-    [SerializeField] private float functionPeriod;
-    [SerializeField] private float growPeriod;
     [SerializeField] private float initialFoodStore;
     [SerializeField] protected float growthFoodConsumption;
-
 
     protected float sunlightIntensity;
     protected float temperature;
@@ -27,6 +24,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     protected float foodStore;
     protected ICompoundChannel sustainer;
     protected Soil environment;
+    protected Transform parentObject;
 
     private float function_dt;
     private float grow_dt;
@@ -39,15 +37,18 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
             return;
         FunctionStep();
         GrowStep();
+        OnUpdate();
     }
     private void OnDisable()
     {
         status.Reset();
     }
-    public void Initialize(ICompoundChannel sustainer, Soil environment)
+    public void Initialize(ICompoundChannel sustainer, Soil environment, Transform parentObject)
     {
         this.sustainer = sustainer;
         this.environment = environment;
+        this.parentObject = parentObject;
+        transform.parent = parentObject;
         environment.Subscribe(GetEnvironmentConditions);
         function_dt = grow_dt = 0f;
         isHealthy = true;
@@ -68,7 +69,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     private void FunctionStep()
     {
         function_dt += Time.deltaTime;
-        if (function_dt >= functionPeriod)
+        if (function_dt >= DebugFloats.functionTickPeriod)
         {
             Function(function_dt * DebugFloats.simulationSpeed);
             Live(function_dt * DebugFloats.simulationSpeed);
@@ -78,7 +79,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     private void GrowStep()
     {
         grow_dt += Time.deltaTime;
-        if (grow_dt >= growPeriod)
+        if (grow_dt >= DebugFloats.growTickPeriod)
         {
             if (foodStore >= growthFoodConsumption * grow_dt)
                 Grow(grow_dt * DebugFloats.simulationSpeed);
@@ -158,6 +159,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
 
     #region Abstract Functions
     protected abstract void OnInitialize();
+    protected abstract void OnUpdate();
     protected abstract void Function(float deltaTime);
     protected abstract void Grow(float deltaTime);
     protected abstract void ShowSymptoms(int compoundIndex, bool isExcess);

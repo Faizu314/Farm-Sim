@@ -1,35 +1,33 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(GrowGraphics))]
 public class TomatoStem : PlantElement
 {
     [Header("Grow")]
+    [SerializeField] private GrowGraphics growGraphics;
     [SerializeField] [Range(0, 4)] private int maxSoilHardness;
-    [SerializeField] private float translationRate;
-    [SerializeField] private float maxTranslationGrowth;
 
-    [Header("Output")]
-    [SerializeField] private GameObject outputLeavesPrefab;
-    [SerializeField] private int maxLeaves;
-    [SerializeField] private float requiredHeightPerLeaf;
-    [SerializeField] private float requiredFoodPerLeaf;
+    [SerializeField] private List<LeavesData> outputData;
 
-    private List<PlantElement> outputLeaves = new List<PlantElement>();
+    private List<PlantElement> leaves = new List<PlantElement>();
     private float diffMultiplier;
-    private int outputLeavesSpawned;
-    private float heightAtprevLeaf;
+    private int currentOutput;
 
     protected override void OnInitialize()
     {
-        outputLeavesSpawned = 0;
+        currentOutput = 0;
         diffMultiplier = 1f;
     }
+    protected override void OnUpdate() { }
+
     protected override void Function(float deltaTime)
     {
-        for (int i = 0; i < outputLeavesSpawned; i++)
-            ExchangeCompounds(outputLeaves[i], deltaTime, diffMultiplier);
+        for (int i = 0; i < currentOutput; i++)
+            ExchangeCompounds(leaves[i], deltaTime, diffMultiplier);
 
-        if (outputLeavesSpawned >= maxLeaves || foodStore > requiredFoodPerLeaf + 0.1f)
+        if (currentOutput >= outputData.Count || 
+            foodStore > outputData[currentOutput].requiredFood + 1f)
             GiveFood((PlantElement)sustainer, deltaTime * 0.1f);
     }
     protected override void Grow(float deltaTime)
@@ -38,8 +36,7 @@ public class TomatoStem : PlantElement
         {
             foodStore -= growthFoodConsumption * deltaTime;
             growth += DebugFloats.growthIncrement * deltaTime;
-            if (foodStore >= requiredFoodPerLeaf && growth <= maxTranslationGrowth)
-                GetComponent<Transform>().Translate(Vector3.up * translationRate * deltaTime);
+            growGraphics.SetGrowth(growth);
         }
     }
     protected override void ShowSymptoms(int compoundIndex, bool isExcess)
@@ -52,24 +49,26 @@ public class TomatoStem : PlantElement
     }
     protected override bool ShouldOutput()
     {
-        if (transform.position.y < 0.1f)
+        if (currentOutput >= outputData.Count)
             return false;
-        if (outputLeavesSpawned >= maxLeaves)
+        if (foodStore < outputData[currentOutput].requiredFood)
             return false;
-        if (foodStore < requiredFoodPerLeaf)
+        if (growth < outputData[currentOutput].requiredGrowth)
             return false;
-        return transform.position.y >= heightAtprevLeaf + requiredHeightPerLeaf;
+        return true;
     }
     protected override void Output()
     {
-        outputLeaves.Add(Instantiate(outputLeavesPrefab).GetComponent<PlantElement>());
-        Transform leaves = outputLeaves[outputLeavesSpawned].GetComponent<Transform>();
+        leaves.Add(Instantiate(outputData[currentOutput].prefab).GetComponent<PlantElement>());
+        leaves[currentOutput].Initialize(this, environment, parentObject);
 
-        leaves.position = transform.position;
-        heightAtprevLeaf = transform.position.y;
-        leaves.Translate(new Vector3(0.01f, 0.05f, 0));
-        outputLeaves[outputLeavesSpawned].Initialize(this, environment);
-        outputLeavesSpawned++;
-        diffMultiplier = 1f / outputLeavesSpawned;
+        currentOutput++;
+        diffMultiplier = 1f / currentOutput;
+    }
+    [System.Serializable] private struct LeavesData
+    {
+        public GameObject prefab;
+        public float requiredGrowth;
+        public float requiredFood;
     }
 }
