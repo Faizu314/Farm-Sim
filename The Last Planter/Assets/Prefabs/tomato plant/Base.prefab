@@ -216,7 +216,7 @@ MonoBehaviour:
   maxSoilHardness: 2
   outputData:
   - prefab: {fileID: 1524420430235920370, guid: d6ae0ddd61d2b334abf1fcec5c215ed8, type: 3}
-    requiredGrowth: 1.2
+    requiredGrowth: 1
     requiredFood: 1
   - prefab: {fileID: 2188937487618201899, guid: 0372e577ade6d8b4cbe5fe1075afde0e, type: 3}
     requiredGrowth: 2.6

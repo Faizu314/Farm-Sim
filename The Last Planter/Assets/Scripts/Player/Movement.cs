@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     [Header("Look Settings")]
     [SerializeField] private Camera cam;
+    [SerializeField] private Transform camParent;
     [SerializeField] [Range(0f, 2f)] private float sensitivity;
     [SerializeField] [Range(0f, 1f)] private float cameraSmoothness;
     [SerializeField] private float minCamRotation;
@@ -30,20 +29,22 @@ public class Movement : MonoBehaviour
             DesktopInput();
         else if (SystemInfo.deviceType == DeviceType.Handheld)
             MobileInput();
-        PlayerRotation();
+    }
+    private void LateUpdate()
+    {        
+        CamParentRotation();
         CamRotation();
     }
     private void FixedUpdate()
-    {        
+    {
         PlayerMovement();
     }
-
     private void DesktopInput()
     {
         rawMouseDy += Input.GetAxis("Mouse Y") * sensitivity;
         rawMouseDx += Input.GetAxis("Mouse X") * sensitivity;
-        rawMoveX += Input.GetAxis("Horizontal") * movementSpeed;
-        rawMoveZ += Input.GetAxis("Vertical") * movementSpeed;
+        rawMoveX += Input.GetAxisRaw("Horizontal") * movementSpeed;
+        rawMoveZ += Input.GetAxisRaw("Vertical") * movementSpeed;
     }
     private void MobileInput()
     {
@@ -61,15 +62,16 @@ public class Movement : MonoBehaviour
     private void PlayerMovement()
     {
         float divider = (rawMoveX != 0f && rawMoveZ != 0f) ? 1.414f : 1f;
-        rb.AddForce((transform.right * rawMoveX + transform.forward * rawMoveZ) / divider);
+        rb.AddForce((camParent.transform.right * rawMoveX + camParent.transform.forward * rawMoveZ) / divider, ForceMode.Force);
+
         rawMoveX = rawMoveZ = 0f;
     }
-    private void PlayerRotation()
+    private void CamParentRotation()
     {
         rawPlayerRotationZ += rawMouseDx;
         rawMouseDx = 0f;
 
-        float currentRotation = transform.eulerAngles.y;
+        float currentRotation = camParent.transform.eulerAngles.y;
 
         float rotationDifference = Mathf.Abs(rawPlayerRotationZ - currentRotation);
         if (rotationDifference > 180f)
@@ -80,7 +82,7 @@ public class Movement : MonoBehaviour
         }
         currentRotation = Mathf.Lerp(currentRotation, rawPlayerRotationZ, cameraSmoothness);
 
-        transform.eulerAngles = Vector3.up * currentRotation;
+        camParent.transform.eulerAngles = Vector3.up * currentRotation;
     }
     private void CamRotation()
     {
@@ -88,7 +90,7 @@ public class Movement : MonoBehaviour
         rawMouseDy = 0f;
         rawCamRotationX = Mathf.Clamp(rawCamRotationX, minCamRotation, maxCamRotation);
 
-        float currentRotation = cam.transform.eulerAngles.x;
+        float currentRotation = cam.transform.localEulerAngles.x;
         if (currentRotation > -minCamRotation + 1f)
             currentRotation = 360f - currentRotation;
         else

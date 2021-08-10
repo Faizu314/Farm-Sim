@@ -17,6 +17,7 @@ public class TomatoLeaves : PlantElement
     protected override void OnInitialize()
     {
         hasGivenFruit = false;
+        transform.localScale = Vector3.zero;
     }
     protected override void OnUpdate() 
     {

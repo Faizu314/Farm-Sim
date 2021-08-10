@@ -80,8 +80,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Clip_: 0.9352693
-    - Grow_: 0.7710218
+    - Clip_: 1
+    - Grow_: 1.1195501
     - Vector1_a47109f9bf3d4bb699d84a39d302fefd: -1
     - Vector1_b225f74608b2460ead104eebdedbcbbd: 0.511
     - Vector1_eb4d41c1076143dba73c349c680bc433: 0.926
