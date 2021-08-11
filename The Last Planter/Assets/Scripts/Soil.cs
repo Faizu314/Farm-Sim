@@ -17,9 +17,11 @@ public class Soil : MonoBehaviour, ICompoundChannel
 
     private void Start()
     {
-        GameObject plant = new GameObject("Tomato Plant");
+        GameObject plant = Instantiate(toPlant);
         plant.transform.localPosition = Vector3.zero;
-        Instantiate(toPlant).GetComponent<PlantElement>().Initialize(this, this, plant.transform);
+        GameObject seed = plant.transform.Find("Seed").gameObject;
+        seed.SetActive(true);
+        seed.GetComponent<PlantElement>().Initialize(this, this, plant.transform);
         environment_dt = 0;
         Weather.Subscribe(GetWeatherConditions);
     }

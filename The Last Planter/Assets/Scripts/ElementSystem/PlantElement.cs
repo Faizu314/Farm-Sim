@@ -48,7 +48,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         this.sustainer = sustainer;
         this.environment = environment;
         this.parentObject = parentObject;
-        transform.parent = parentObject;
+        //transform.parent = parentObject;
         environment.Subscribe(GetEnvironmentConditions);
         function_dt = grow_dt = 0f;
         isHealthy = true;

@@ -3,10 +3,10 @@ using UnityEngine;
 public class TomatoRoots : PlantElement
 {
     [Header("Output")]
-    [SerializeField] private GameObject outputPrefab;
+    [SerializeField] private GameObject output;
     [SerializeField] private float requiredOutputGrowth;
 
-    private PlantElement output;
+    private PlantElement stemPE;
     private bool outputSpawned;
 
     protected override void OnInitialize()
@@ -19,7 +19,7 @@ public class TomatoRoots : PlantElement
     {
         ExchangeCompounds(sustainer, deltaTime);
         if (outputSpawned)
-            ExchangeCompounds(output, deltaTime);
+            ExchangeCompounds(stemPE, deltaTime);
     }
     protected override void Grow(float deltaTime)
     {
@@ -43,8 +43,9 @@ public class TomatoRoots : PlantElement
     }
     protected override void Output()
     {
-        output = Instantiate(outputPrefab).GetComponent<PlantElement>();
-        output.Initialize(this, environment, parentObject);
+        output.SetActive(true);
+        stemPE = output.GetComponent<PlantElement>();
+        stemPE.Initialize(this, environment, parentObject);
         outputSpawned = true;
     }
 }

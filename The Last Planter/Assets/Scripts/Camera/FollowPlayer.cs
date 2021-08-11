@@ -3,7 +3,7 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    [SerializeField] [Range(1f, 20f)] private float lerpSpeed;
+    [SerializeField] [Range(1f, 30f)] private float lerpSpeed;
 
     void LateUpdate()
     {

@@ -10,7 +10,7 @@ public class TomatoSeed : PlantElement
     [SerializeField] private float germinationWaterConsumption;
 
     [Header("Output")]
-    [SerializeField] private GameObject rootsPrefab;
+    [SerializeField] private GameObject output;
     [SerializeField] private float requiredOutputGrowth;
 
     protected override void OnInitialize() { }
@@ -39,7 +39,8 @@ public class TomatoSeed : PlantElement
     }
     protected override void Output()
     {
-        PlantElement rootsPE = Instantiate(rootsPrefab).GetComponent<PlantElement>();
+        output.SetActive(true);
+        PlantElement rootsPE = output.GetComponent<PlantElement>();
         rootsPE.Initialize(sustainer, environment, parentObject);
         PassEverthing(rootsPE);
         Destroy(gameObject);

@@ -8,7 +8,7 @@ public class TomatoLeaves : PlantElement
     [SerializeField] private float outputFoodAmount = 0.2f;
 
     [Header("Output")]
-    [SerializeField] private GameObject outputFruitPrefab;
+    [SerializeField] private GameObject output;
     [SerializeField] private float requiredOutputGrowth;
 
     private bool hasGivenFruit;
@@ -48,12 +48,12 @@ public class TomatoLeaves : PlantElement
     }
     protected override bool ShouldOutput()
     {
-        return outputFruitPrefab != null && growth >= requiredOutputGrowth && !hasGivenFruit;
+        return output != null && growth >= requiredOutputGrowth && !hasGivenFruit;
     }
     protected override void Output()
     {
-        GameObject fruitObj = Instantiate(outputFruitPrefab);
-        fruit = fruitObj.GetComponent<PlantElement>();
+        output.SetActive(true);
+        fruit = output.GetComponent<PlantElement>();
         fruit.Initialize(this, environment, parentObject);
         hasGivenFruit = true;
     }

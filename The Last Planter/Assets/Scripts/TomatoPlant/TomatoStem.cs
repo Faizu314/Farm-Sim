@@ -10,7 +10,7 @@ public class TomatoStem : PlantElement
 
     [SerializeField] private List<LeavesData> outputData;
 
-    private List<PlantElement> leaves = new List<PlantElement>();
+    private List<PlantElement> outputPEs = new List<PlantElement>();
     private float diffMultiplier;
     private int currentOutput;
 
@@ -24,7 +24,7 @@ public class TomatoStem : PlantElement
     protected override void Function(float deltaTime)
     {
         for (int i = 0; i < currentOutput; i++)
-            ExchangeCompounds(leaves[i], deltaTime, diffMultiplier);
+            ExchangeCompounds(outputPEs[i], deltaTime, diffMultiplier);
 
         if (currentOutput >= outputData.Count || 
             foodStore > outputData[currentOutput].requiredFood + 1f)
@@ -32,7 +32,7 @@ public class TomatoStem : PlantElement
     }
     protected override void Grow(float deltaTime)
     {
-        if (foodStore >= growthFoodConsumption * deltaTime && soilHardness < maxSoilHardness)
+        if (foodStore >= growthFoodConsumption * deltaTime && soilHardness <= maxSoilHardness)
         {
             foodStore -= growthFoodConsumption * deltaTime;
             growth += DebugFloats.growthIncrement * deltaTime;
@@ -59,8 +59,9 @@ public class TomatoStem : PlantElement
     }
     protected override void Output()
     {
-        leaves.Add(Instantiate(outputData[currentOutput].prefab).GetComponent<PlantElement>());
-        leaves[currentOutput].Initialize(this, environment, parentObject);
+        outputData[currentOutput].prefab.SetActive(true);
+        outputPEs.Add(outputData[currentOutput].prefab.GetComponent<PlantElement>());
+        outputPEs[currentOutput].Initialize(this, environment, parentObject);
 
         currentOutput++;
         diffMultiplier = 1f / currentOutput;
