@@ -17,16 +17,17 @@ public class TomatoLeaves : PlantElement
     protected override void OnInitialize()
     {
         hasGivenFruit = false;
-        transform.localScale = Vector3.zero;
+        transform.localScale = Vector3.one * 0.01f;
     }
     protected override void OnUpdate() 
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * Mathf.Clamp(growth, 0f, 1f), Time.deltaTime);
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 3.824062f * (Mathf.Clamp(growth, 0f, 1f) + 0.01f), Time.deltaTime);
     }
     protected override void Function(float deltaTime)
     {
         Photosynthesis(deltaTime);
-        GiveFood((PlantElement)sustainer, deltaTime * 0.07f);
+        if (foodStore > 0.5f)
+            GiveFood((PlantElement)sustainer, deltaTime * 0.2f);
         if (hasGivenFruit)
             GiveFood(fruit, deltaTime * 0.08f);
     }
@@ -68,7 +69,7 @@ public class TomatoLeaves : PlantElement
             GetContent(PO4) >= mineralAmount &&
             GetContent(K) >= mineralAmount)
         {
-            foodStore += outputFoodAmount * sunlightIntensity * deltaTime;
+            foodStore += outputFoodAmount * sunlightIntensity * growth * deltaTime;
             UpdateContent(H2O, -waterAmount);
             UpdateContent(N, -mineralAmount);
             UpdateContent(PO4, -mineralAmount);

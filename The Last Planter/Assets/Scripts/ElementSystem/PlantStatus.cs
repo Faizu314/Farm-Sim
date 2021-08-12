@@ -6,9 +6,9 @@ using PlantSimulation;
 public class PlantStatus
 {
     [SerializeField] private List<CompoundAssociation> compoundAssociations;
-    [SerializeField] [Range(0.01f, 1f)] private float surfaceArea;
+    [SerializeField] [Range(0.01f, 10f)] private float surfaceArea;
     [SerializeField] [Range(0f, 1f)] private float absorptionStrength;
-    [SerializeField] [Range(0.01f, 1f)] private float maxOsmosis;
+    [SerializeField] [Range(0.01f, 10f)] private float maxOsmosis;
 
     public List<float> compoundContents;
     private List<float> deltaContents;
@@ -71,10 +71,7 @@ public class PlantStatus
             if (InRange(content, minLevel, maxLevel))
                 wellBeing += 0.4f;
             else
-            {
-                wellBeing = -1f;
-                break;
-            }
+                return -1f;
         }
         return wellBeing;
     }

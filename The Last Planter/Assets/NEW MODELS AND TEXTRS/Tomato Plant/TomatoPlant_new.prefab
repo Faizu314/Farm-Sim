@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010922412334244039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4799064554725796161}
@@ -64,7 +64,7 @@ MonoBehaviour:
     absorptionStrength: 0
     maxOsmosis: 0.119
     compoundContents: []
-  initialFoodStore: 10
+  initialFoodStore: 1.1
   growthFoodConsumption: 0.1
   minSoilHardness: 0
   minSunlightIntensity: 0
@@ -169,25 +169,25 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 10
       deficiencyLevel: 0
     - compoundName: Nitrogen
-      excessLevel: 1
+      excessLevel: 5.16
       deficiencyLevel: 0
     - compoundName: Phosphorous
-      excessLevel: 1
+      excessLevel: 5.41
       deficiencyLevel: 0
     - compoundName: Potassium
-      excessLevel: 1
+      excessLevel: 5.09
       deficiencyLevel: 0
     - compoundName: Calcium
-      excessLevel: 0.3
+      excessLevel: 5.03
       deficiencyLevel: 0
-    surfaceArea: 0.232
+    surfaceArea: 1
     absorptionStrength: 0
-    maxOsmosis: 0.128
+    maxOsmosis: 2
     compoundContents: []
-  initialFoodStore: 10
+  initialFoodStore: 1.2
   growthFoodConsumption: 0.1
   output: {fileID: 3270118959225235476}
   requiredOutputGrowth: 0.1
@@ -369,37 +369,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growMaterial: {fileID: 2100000, guid: dd30d4a97e09ecc41b2ae231036a3987, type: 2}
   mainTex: {fileID: 2800000, guid: dd5aac33af1633545b3e43e7bf95186a, type: 3}
-  shaderStrength: -1
+  shaderStrength: -0.62
   clipValue:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.857
-      inSlope: 0.06942729
-      outSlope: 0.06942729
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.20545696
-    - serializedVersion: 3
-      time: 0.9
-      value: 0.971
-      inSlope: 0.20833324
-      outSlope: 0.20833324
+      value: 0.837
+      inSlope: 0.009999871
+      outSlope: 0.009999871
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.84
+      inSlope: 0.03820935
+      outSlope: 0.03820935
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5808678
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.28999978
-      outSlope: 0.28999978
+      inSlope: 0.22857147
+      outSlope: 0.22857147
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -421,59 +421,65 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 10
       deficiencyLevel: 0
     - compoundName: Nitrogen
-      excessLevel: 1
+      excessLevel: 5.16
       deficiencyLevel: 0
     - compoundName: Phosphorous
-      excessLevel: 1
+      excessLevel: 5.41
       deficiencyLevel: 0
     - compoundName: Potassium
-      excessLevel: 1
+      excessLevel: 5.09
       deficiencyLevel: 0
     - compoundName: Calcium
-      excessLevel: 0.3
+      excessLevel: 5.03
       deficiencyLevel: 0
-    surfaceArea: 0.21
+    surfaceArea: 1
     absorptionStrength: 0
-    maxOsmosis: 0.106
+    maxOsmosis: 2
     compoundContents: []
-  initialFoodStore: 100
+  initialFoodStore: 3
   growthFoodConsumption: 0.1
   growGraphics: {fileID: 3472977965453398316}
   maxSoilHardness: 0
   outputData:
+  - prefab: {fileID: 4977333782501380836}
+    requiredGrowth: 0.132
+    requiredFood: 0
+  - prefab: {fileID: 4977333783493831093}
+    requiredGrowth: 0.132
+    requiredFood: 0
   - prefab: {fileID: 4977333783168104938}
     requiredGrowth: 0.56
-    requiredFood: 0
+    requiredFood: 5
   - prefab: {fileID: 4977333782608142163}
     requiredGrowth: 0.6
-    requiredFood: 0
+    requiredFood: 5
   - prefab: {fileID: 4977333782648438118}
     requiredGrowth: 0.61
-    requiredFood: 0
+    requiredFood: 5
   - prefab: {fileID: 7927231087979687448}
     requiredGrowth: 0.8
-    requiredFood: 0
+    requiredFood: 5
   - prefab: {fileID: 4977333783520494344}
     requiredGrowth: 0.88
-    requiredFood: 0
+    requiredFood: 5
   - prefab: {fileID: 4977333782491557428}
     requiredGrowth: 1.04
-    requiredFood: 0
+    requiredFood: 5
   - prefab: {fileID: 4977333782362000816}
     requiredGrowth: 1.12
-    requiredFood: 0
+    requiredFood: 5
   - prefab: {fileID: 4977333783115034635}
     requiredGrowth: 1.26
     requiredFood: 0
   - prefab: {fileID: 4977333782249055091}
     requiredGrowth: 1.52
-    requiredFood: 0
+    requiredFood: 5
   - prefab: {fileID: 4977333783107520984}
     requiredGrowth: 1.7
-    requiredFood: 0
+    requiredFood: 5
 --- !u!1 &4977333781408961016
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,14 +592,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781451165371
@@ -708,14 +714,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781468734405
@@ -830,14 +836,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781473954967
@@ -952,14 +958,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781476180702
@@ -1155,14 +1161,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781521829160
@@ -1277,14 +1283,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781538571336
@@ -1399,14 +1405,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781548181625
@@ -1521,14 +1527,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781560952920
@@ -1643,14 +1649,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781578278363
@@ -1765,14 +1771,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781582486871
@@ -1887,14 +1893,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781589861245
@@ -2009,14 +2015,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781599341286
@@ -2212,14 +2218,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781621453154
@@ -2334,14 +2340,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781633834829
@@ -2456,14 +2462,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781636190846
@@ -2578,14 +2584,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781637391929
@@ -2700,14 +2706,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781638474223
@@ -2822,14 +2828,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781639458368
@@ -2944,14 +2950,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781641049307
@@ -3147,14 +3153,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781692153881
@@ -3269,14 +3275,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781693758321
@@ -3391,14 +3397,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781728250184
@@ -3513,14 +3519,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781728551830
@@ -3635,14 +3641,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781735244497
@@ -3757,14 +3763,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781737810139
@@ -4006,14 +4012,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781819560233
@@ -4128,14 +4134,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781822468750
@@ -4250,14 +4256,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781823025435
@@ -4372,14 +4378,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781830250960
@@ -4494,14 +4500,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781834579053
@@ -4616,14 +4622,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781881584885
@@ -4820,14 +4826,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781903379208
@@ -4942,14 +4948,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781905976855
@@ -5145,14 +5151,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781940115578
@@ -5267,14 +5273,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781942976324
@@ -5389,14 +5395,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333781945918720
@@ -5511,14 +5517,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782010848630
@@ -5633,14 +5639,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782016263088
@@ -5755,14 +5761,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782029227631
@@ -5877,14 +5883,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782053800415
@@ -5999,14 +6005,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782056446187
@@ -6202,14 +6208,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782107718996
@@ -6487,14 +6493,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782161729379
@@ -6609,14 +6615,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782178336718
@@ -6731,14 +6737,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782202318503
@@ -7017,14 +7023,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782223143562
@@ -7139,14 +7145,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782227510447
@@ -7261,14 +7267,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782230547238
@@ -7574,7 +7580,7 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 5
       deficiencyLevel: 0
     - compoundName: Nitrogen
       excessLevel: 1
@@ -7588,9 +7594,9 @@ MonoBehaviour:
     - compoundName: Calcium
       excessLevel: 0.3
       deficiencyLevel: 0
-    surfaceArea: 0.242
-    absorptionStrength: 0
-    maxOsmosis: 0.106
+    surfaceArea: 0.5
+    absorptionStrength: 0.01
+    maxOsmosis: 0.8
     compoundContents: []
   initialFoodStore: 10
   growthFoodConsumption: 0.1
@@ -7742,14 +7748,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782260466219
@@ -7864,14 +7870,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782285742420
@@ -7986,14 +7992,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782288026179
@@ -8108,14 +8114,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782339242199
@@ -8230,14 +8236,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782362000816
@@ -8380,7 +8386,7 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 5
       deficiencyLevel: 0
     - compoundName: Nitrogen
       excessLevel: 1
@@ -8394,9 +8400,9 @@ MonoBehaviour:
     - compoundName: Calcium
       excessLevel: 0.3
       deficiencyLevel: 0
-    surfaceArea: 0.242
-    absorptionStrength: 0
-    maxOsmosis: 0.106
+    surfaceArea: 0.5
+    absorptionStrength: 0.01
+    maxOsmosis: 0.8
     compoundContents: []
   initialFoodStore: 10
   growthFoodConsumption: 0.1
@@ -8548,14 +8554,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782411856710
@@ -8670,14 +8676,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782415335860
@@ -8873,14 +8879,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782437062597
@@ -8995,14 +9001,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782444151436
@@ -9199,14 +9205,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782491557428
@@ -9349,7 +9355,7 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 5
       deficiencyLevel: 0
     - compoundName: Nitrogen
       excessLevel: 1
@@ -9363,9 +9369,9 @@ MonoBehaviour:
     - compoundName: Calcium
       excessLevel: 0.3
       deficiencyLevel: 0
-    surfaceArea: 0.242
-    absorptionStrength: 0
-    maxOsmosis: 0.106
+    surfaceArea: 0.5
+    absorptionStrength: 0.01
+    maxOsmosis: 0.8
     compoundContents: []
   initialFoodStore: 10
   growthFoodConsumption: 0.1
@@ -9431,13 +9437,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4977333782501380836}
-  m_LocalRotation: {x: -0.02834447, y: -0.8745911, z: 0.19605891, w: 0.44254717}
-  m_LocalPosition: {x: -0.0098, y: 7.4615, z: -0.7374}
-  m_LocalScale: {x: -0.26049218, y: 0.26049218, z: 0.2604922}
+  m_LocalRotation: {x: -0.5475232, y: 0.06533642, z: 0.09884873, w: 0.82835895}
+  m_LocalPosition: {x: 0.0849, y: 1.762, z: -0.096}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4799064554725796161}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -198.533, y: -304.09, z: 553.61}
+  m_LocalEulerAnglesHint: {x: -113.073, y: 180, z: 553.61}
 --- !u!33 &4977333782501380839
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9517,14 +9523,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782503973074
@@ -9802,14 +9808,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782529416703
@@ -9924,14 +9930,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782537035882
@@ -10046,14 +10052,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782539923163
@@ -10250,14 +10256,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782563113185
@@ -10453,14 +10459,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782576971201
@@ -10666,14 +10672,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782607766845
@@ -10862,7 +10868,7 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 5
       deficiencyLevel: 0
     - compoundName: Nitrogen
       excessLevel: 1
@@ -10876,9 +10882,9 @@ MonoBehaviour:
     - compoundName: Calcium
       excessLevel: 0.3
       deficiencyLevel: 0
-    surfaceArea: 0.242
-    absorptionStrength: 0
-    maxOsmosis: 0.106
+    surfaceArea: 0.5
+    absorptionStrength: 0.01
+    maxOsmosis: 0.8
     compoundContents: []
   initialFoodStore: 10
   growthFoodConsumption: 0.1
@@ -11076,14 +11082,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782631761593
@@ -11198,14 +11204,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782648438118
@@ -11348,7 +11354,7 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 5
       deficiencyLevel: 0
     - compoundName: Nitrogen
       excessLevel: 1
@@ -11362,9 +11368,9 @@ MonoBehaviour:
     - compoundName: Calcium
       excessLevel: 0.3
       deficiencyLevel: 0
-    surfaceArea: 0.242
-    absorptionStrength: 0
-    maxOsmosis: 0.106
+    surfaceArea: 0.5
+    absorptionStrength: 0.01
+    maxOsmosis: 0.8
     compoundContents: []
   initialFoodStore: 10
   growthFoodConsumption: 0.1
@@ -11516,14 +11522,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782685737727
@@ -11720,14 +11726,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782718794661
@@ -11924,14 +11930,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782756396817
@@ -12046,14 +12052,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782762253670
@@ -12168,14 +12174,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782766411037
@@ -12336,14 +12342,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782773465802
@@ -12621,14 +12627,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782834411630
@@ -12824,14 +12830,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782864240511
@@ -12946,14 +12952,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782875945970
@@ -13476,14 +13482,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782932246166
@@ -13598,14 +13604,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782939683057
@@ -13801,14 +13807,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782969603942
@@ -13923,14 +13929,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782987286126
@@ -14045,14 +14051,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333782998494483
@@ -14211,14 +14217,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783010488733
@@ -14378,14 +14384,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783054184551
@@ -14500,14 +14506,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783054892360
@@ -14703,14 +14709,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783095706429
@@ -14899,7 +14905,7 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 5
       deficiencyLevel: 0
     - compoundName: Nitrogen
       excessLevel: 1
@@ -14913,9 +14919,9 @@ MonoBehaviour:
     - compoundName: Calcium
       excessLevel: 0.3
       deficiencyLevel: 0
-    surfaceArea: 0.242
-    absorptionStrength: 0
-    maxOsmosis: 0.106
+    surfaceArea: 0.5
+    absorptionStrength: 0.01
+    maxOsmosis: 0.8
     compoundContents: []
   initialFoodStore: 10
   growthFoodConsumption: 0.1
@@ -15067,14 +15073,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783115034635
@@ -15217,7 +15223,7 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 5
       deficiencyLevel: 0
     - compoundName: Nitrogen
       excessLevel: 1
@@ -15231,9 +15237,9 @@ MonoBehaviour:
     - compoundName: Calcium
       excessLevel: 0.3
       deficiencyLevel: 0
-    surfaceArea: 0.242
-    absorptionStrength: 0
-    maxOsmosis: 0.106
+    surfaceArea: 0.5
+    absorptionStrength: 0.01
+    maxOsmosis: 0.8
     compoundContents: []
   initialFoodStore: 10
   growthFoodConsumption: 0.1
@@ -15385,14 +15391,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783131894932
@@ -15507,14 +15513,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783149920112
@@ -15629,14 +15635,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783152895308
@@ -15751,14 +15757,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783156635537
@@ -15873,14 +15879,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783162817520
@@ -15995,14 +16001,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783168104938
@@ -16145,7 +16151,7 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 5
       deficiencyLevel: 0
     - compoundName: Nitrogen
       excessLevel: 1
@@ -16159,9 +16165,9 @@ MonoBehaviour:
     - compoundName: Calcium
       excessLevel: 0.3
       deficiencyLevel: 0
-    surfaceArea: 0.242
-    absorptionStrength: 0
-    maxOsmosis: 0.106
+    surfaceArea: 0.5
+    absorptionStrength: 0.01
+    maxOsmosis: 0.8
     compoundContents: []
   initialFoodStore: 10
   growthFoodConsumption: 0.1
@@ -16394,14 +16400,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783239821818
@@ -16516,14 +16522,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783249553404
@@ -16638,14 +16644,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783296378167
@@ -16760,14 +16766,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783318147086
@@ -16882,14 +16888,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783324661047
@@ -17004,14 +17010,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783330262455
@@ -17126,14 +17132,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783336280636
@@ -17248,14 +17254,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783336397557
@@ -17370,14 +17376,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783353656900
@@ -17492,14 +17498,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783356303812
@@ -17614,14 +17620,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783379046190
@@ -17736,14 +17742,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783398468193
@@ -17903,14 +17909,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783431453992
@@ -18025,14 +18031,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783467504263
@@ -18147,14 +18153,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783480240130
@@ -18350,14 +18356,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783493831093
@@ -18387,8 +18393,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4977333783493831093}
   m_LocalRotation: {x: -0.038817994, y: -0.7877414, z: -0.602194, w: -0.123770185}
-  m_LocalPosition: {x: 0.0037, y: 7.5153, z: -0.7513}
-  m_LocalScale: {x: -0.26049218, y: 0.26049218, z: 0.2604922}
+  m_LocalPosition: {x: 0.097, y: 1.762, z: -0.071}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4799064554725796161}
   m_RootOrder: 12
@@ -18472,14 +18478,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783503220510
@@ -18594,14 +18600,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783507686332
@@ -18716,14 +18722,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &4977333783520494344
@@ -18866,7 +18872,7 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 5
       deficiencyLevel: 0
     - compoundName: Nitrogen
       excessLevel: 1
@@ -18880,9 +18886,9 @@ MonoBehaviour:
     - compoundName: Calcium
       excessLevel: 0.3
       deficiencyLevel: 0
-    surfaceArea: 0.242
-    absorptionStrength: 0
-    maxOsmosis: 0.106
+    surfaceArea: 0.5
+    absorptionStrength: 0.01
+    maxOsmosis: 0.8
     compoundContents: []
   initialFoodStore: 10
   growthFoodConsumption: 0.1
@@ -19079,14 +19085,14 @@ MonoBehaviour:
       excessLevel: 0.3
       deficiencyLevel: 0
     surfaceArea: 0.221
-    absorptionStrength: 0
+    absorptionStrength: 0.01
     maxOsmosis: 0.148
     compoundContents: []
-  initialFoodStore: 10
-  growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.01
-  inputWaterAmount: 0.02
-  outputFoodAmount: 0.2
+  initialFoodStore: 0.4
+  growthFoodConsumption: 0.05
+  inputMineralsAmount: 0.001
+  inputWaterAmount: 0.002
+  outputFoodAmount: 0.4
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &7674123024914260044
@@ -19311,7 +19317,7 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 2
+      excessLevel: 5
       deficiencyLevel: 0
     - compoundName: Nitrogen
       excessLevel: 1
@@ -19325,9 +19331,9 @@ MonoBehaviour:
     - compoundName: Calcium
       excessLevel: 0.3
       deficiencyLevel: 0
-    surfaceArea: 0.242
-    absorptionStrength: 0
-    maxOsmosis: 0.106
+    surfaceArea: 0.5
+    absorptionStrength: 0.01
+    maxOsmosis: 0.8
     compoundContents: []
   initialFoodStore: 10
   growthFoodConsumption: 0.1

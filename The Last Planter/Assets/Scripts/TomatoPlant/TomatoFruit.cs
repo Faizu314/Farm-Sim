@@ -8,7 +8,10 @@ public class TomatoFruit : PlantElement
     [SerializeField] private float rottingGrowth;
 
     protected override void OnInitialize() { }
-    protected override void OnUpdate() { }
+    protected override void OnUpdate() 
+    {
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 1.204145f * (Mathf.Clamp(growth, 0f, 1f) + 0.01f), Time.deltaTime);
+    }
     protected override void Function(float deltaTime)
     {
         ExchangeCompounds(sustainer, deltaTime);

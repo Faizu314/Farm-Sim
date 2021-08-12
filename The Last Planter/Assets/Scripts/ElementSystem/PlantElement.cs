@@ -94,9 +94,14 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     }
     private void Live(float deltaTime)
     {
-        Respiration(deltaTime);
+        if (CanRespire(deltaTime))
+        {
+            Respiration(deltaTime);
+            CheckCompoundContents(deltaTime);
+        }
+        else
+            health -= DebugFloats.healthIncrement * deltaTime;
         //Evaporation(deltaTime);
-        CheckCompoundContents(deltaTime);
         CheckSymptoms();
 
         if (foodStore < 1f && sustainer is PlantElement)
@@ -108,16 +113,15 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     {
         foodStore += amount;
     }
+    private bool CanRespire(float deltaTime)
+    {
+        return (foodStore >= DebugFloats.respireFoodConsumption * deltaTime &&
+                GetContent(H2O) >= DebugFloats.respireWaterConsumption * deltaTime);
+    }
     private void Respiration(float deltaTime)
     {
-        if (foodStore >= DebugFloats.respireFoodConsumption * deltaTime &&
-            GetContent(H2O) >= DebugFloats.respireWaterConsumption * deltaTime)
-        {
-            foodStore -= DebugFloats.respireFoodConsumption * deltaTime;
-            UpdateContent(H2O, -DebugFloats.respireWaterConsumption * deltaTime);
-        }
-        else
-            health -= DebugFloats.healthIncrement * deltaTime;
+        foodStore -= DebugFloats.respireFoodConsumption * deltaTime;
+        UpdateContent(H2O, -DebugFloats.respireWaterConsumption * deltaTime);
     }
     private void Evaporation(float deltaTime)
     {
@@ -173,7 +177,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     {
         status.ExchangeCompounds(other, other == sustainer, deltaTime, rateMultiplier);
     }
-    protected void GiveFood(PlantElement other, float amount)
+    public void GiveFood(PlantElement other, float amount)
     {
         if (foodStore > amount)
         {

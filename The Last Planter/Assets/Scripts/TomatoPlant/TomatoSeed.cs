@@ -50,7 +50,7 @@ public class TomatoSeed : PlantElement
     {
         if (!IsContentAppropriate(H2O))
             return false;
-        float currSunlight = Sunlight.SunlightAtDepth(sunlightIntensity, transform.position.y);
+        float currSunlight = Sunlight.SunlightAtDepth(sunlightIntensity, transform.localPosition.y);
         if (soilHardness >= minSoilHardness)
             if (currSunlight >= minSunlightIntensity && currSunlight <= maxSunlightIntensity)
                 return true;

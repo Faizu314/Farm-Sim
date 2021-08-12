@@ -18,7 +18,7 @@ public class Soil : MonoBehaviour, ICompoundChannel
     private void Start()
     {
         GameObject plant = Instantiate(toPlant);
-        plant.transform.localPosition = Vector3.zero;
+        plant.transform.position = new Vector3(1167.977f,60.299f, 663.316f); 
         GameObject seed = plant.transform.Find("Seed").gameObject;
         seed.SetActive(true);
         seed.GetComponent<PlantElement>().Initialize(this, this, plant.transform);

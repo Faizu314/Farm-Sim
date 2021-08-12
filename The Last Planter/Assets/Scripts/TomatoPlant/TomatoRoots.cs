@@ -19,7 +19,11 @@ public class TomatoRoots : PlantElement
     {
         ExchangeCompounds(sustainer, deltaTime);
         if (outputSpawned)
+        {
             ExchangeCompounds(stemPE, deltaTime);
+            if (foodStore < 0.01f)
+                stemPE.GiveFood(this, 0.02f);
+        }
     }
     protected override void Grow(float deltaTime)
     {

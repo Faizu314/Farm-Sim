@@ -26,12 +26,17 @@ public class TomatoStem : PlantElement
         for (int i = 0; i < currentOutput; i++)
             ExchangeCompounds(outputPEs[i], deltaTime, diffMultiplier);
 
-        if (currentOutput >= outputData.Count || 
+        if (currentOutput >= outputData.Count ||
             foodStore > outputData[currentOutput].requiredFood + 1f)
             GiveFood((PlantElement)sustainer, deltaTime * 0.1f);
     }
     protected override void Grow(float deltaTime)
     {
+        if (currentOutput < outputData.Count)
+        {
+            if (growth <= outputData[currentOutput].requiredGrowth && foodStore < outputData[currentOutput].requiredFood)
+                return;
+        }
         if (foodStore >= growthFoodConsumption * deltaTime && soilHardness <= maxSoilHardness)
         {
             foodStore -= growthFoodConsumption * deltaTime;
@@ -62,6 +67,7 @@ public class TomatoStem : PlantElement
         outputData[currentOutput].prefab.SetActive(true);
         outputPEs.Add(outputData[currentOutput].prefab.GetComponent<PlantElement>());
         outputPEs[currentOutput].Initialize(this, environment, parentObject);
+        foodStore -= outputData[currentOutput].requiredFood;
 
         currentOutput++;
         diffMultiplier = 1f / currentOutput;
