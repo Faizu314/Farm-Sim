@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946893352493021991}
-  m_LocalRotation: {x: 0.71737015, y: -0.0645706, z: 0.0936781, w: 0.6873392}
+  m_LocalRotation: {x: 0.10363361, y: -0.13984826, z: -0.0049095447, w: 0.9847225}
   m_LocalPosition: {x: -0.13159238, y: 0.34868753, z: 8.188965}
-  m_LocalScale: {x: 1.8165818, y: 1.8165818, z: 1.8165818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 93.38898, y: -50.53299, z: -37.67798}
+  m_LocalEulerAnglesHint: {x: 168.303, y: 163.602, z: 177.738}
 --- !u!33 &1475584646057841179
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 3173237220674933911}
   m_LocalRotation: {x: 0.16542958, y: -0.41864046, z: 0.8726921, w: 0.18916044}
   m_LocalPosition: {x: -0.32085, y: -0.12603, z: 13.841}
-  m_LocalScale: {x: 1.349767, y: 1.3497667, z: 1.3497669}
+  m_LocalScale: {x: 0.44945, y: 0.44945, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 15
@@ -360,6 +360,7 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 0.44945
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &3526922902447501694
@@ -586,13 +587,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4073675547762951420}
-  m_LocalRotation: {x: 0.16120149, y: -0.06764858, z: 0.55246896, w: 0.81499434}
-  m_LocalPosition: {x: -1.4077228, y: 0.15699975, z: 8.567008}
-  m_LocalScale: {x: 2.011582, y: 2.0115814, z: 2.0115814}
+  m_LocalRotation: {x: 0.19574918, y: 0.030432489, z: 0.5713252, w: 0.796457}
+  m_LocalPosition: {x: -1.408, y: 0.157, z: 8.654}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 19.725, y: 4.1330004, z: 68.984}
+  m_LocalEulerAnglesHint: {x: 16.084, y: 16.453, z: 73.647}
 --- !u!33 &3124772170925481757
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -669,8 +670,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4267727090430969963}
   m_LocalRotation: {x: 0.24549018, y: 0.007917718, z: 0.44778174, w: -0.8597461}
-  m_LocalPosition: {x: 1.63, y: -0.79, z: 9.67}
-  m_LocalScale: {x: 1.5814214, y: 1.5814213, z: 1.5814214}
+  m_LocalPosition: {x: 1.63, y: -0.79, z: 9.8}
+  m_LocalScale: {x: 0.57739, y: 0.57739, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 12
@@ -762,6 +763,7 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 0.57739
   output: {fileID: 6294801914339132641}
   requiredOutputGrowth: 2
 --- !u!1 &4681641456491282908
@@ -790,13 +792,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4681641456491282908}
-  m_LocalRotation: {x: 0.07192127, y: -0.09433566, z: 0.97905755, w: 0.16545217}
+  m_LocalRotation: {x: 0.15004744, y: -0.42631823, z: 0.88218516, w: 0.13224204}
   m_LocalPosition: {x: -2.3761022, y: 0.23806609, z: 8.519268}
-  m_LocalScale: {x: 1.7906008, y: 1.7906005, z: 1.7906007}
+  m_LocalScale: {x: 0.52528, y: 0.52528, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 12.036, y: 6.4350004, z: 161.49501}
+  m_LocalEulerAnglesHint: {x: 52.36, y: 14.411, z: 170.063}
 --- !u!33 &2702545201166914247
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -884,6 +886,7 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 0.52528
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &5062693783091918849
@@ -1034,13 +1037,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5266271554037241436}
-  m_LocalRotation: {x: -0.072948046, y: -0.16567247, z: 0.10618362, w: 0.9777302}
-  m_LocalPosition: {x: -3.002995, y: 0.20191422, z: 8.174895}
-  m_LocalScale: {x: 1.7906008, y: 1.7906005, z: 1.7906007}
+  m_LocalRotation: {x: -0.25159696, y: -0.19354102, z: -0.020947604, w: 0.9480517}
+  m_LocalPosition: {x: -2.993, y: 0.241, z: 8.362}
+  m_LocalScale: {x: 0.53249, y: 0.53249, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: -6.169, y: -19.964, z: 13.483001}
+  m_LocalEulerAnglesHint: {x: -29.023, y: -24.055, z: 3.782}
 --- !u!33 &960562325604252952
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1128,6 +1131,7 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 0.53249
   output: {fileID: 7930801247215131858}
   requiredOutputGrowth: 2
 --- !u!1 &5844123127351940375
@@ -1156,13 +1160,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5844123127351940375}
-  m_LocalRotation: {x: -0.03143223, y: -0.11824763, z: 0.86163217, w: -0.49256432}
+  m_LocalRotation: {x: 0.14957805, y: -0.06785069, z: 0.83337307, w: -0.52774245}
   m_LocalPosition: {x: 0.084, y: 0.28, z: 5.238}
-  m_LocalScale: {x: 3.928484, y: 3.928484, z: 3.928484}
+  m_LocalScale: {x: 0.68479, y: 0.68479, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 13.576, y: 3.676, z: 239.948}
+  m_LocalEulerAnglesHint: {x: -2.567, y: 18.738, z: 244.265}
 --- !u!33 &8373932945158066585
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1250,6 +1254,7 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 0.68479
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &6283143960203575234
@@ -1278,13 +1283,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6283143960203575234}
-  m_LocalRotation: {x: -0.0010622367, y: -0.081774324, z: 0.9816952, w: 0.17200734}
+  m_LocalRotation: {x: 0.102411434, y: -0.3767925, z: 0.908362, w: 0.14972578}
   m_LocalPosition: {x: -1.2843351, y: 0.3055644, z: 8.606598}
-  m_LocalScale: {x: 3.510982, y: 3.5109813, z: 3.5109816}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 9.218, y: -1.7540001, z: 159.98201}
+  m_LocalEulerAnglesHint: {x: 45.659, y: 6.014, z: 163.814}
 --- !u!33 &4612696549969616383
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1372,6 +1377,7 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 1
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &6294801914339132641
@@ -1401,7 +1407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6294801914339132641}
   m_LocalRotation: {x: -0.002147384, y: 0.13305253, z: 0.95745057, w: 0.2560876}
-  m_LocalPosition: {x: 0.961, y: -0.317, z: 9.788}
+  m_LocalPosition: {x: 0.949, y: -0.363, z: 9.788}
   m_LocalScale: {x: 0.8227414, y: 0.8227414, z: 0.8227414}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
@@ -1492,6 +1498,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 2
   growthFoodConsumption: 0.1
+  goalGrowth: 0.8227414
   rottingGrowth: 2
 --- !u!1 &6434038205425438924
 GameObject:
@@ -1520,8 +1527,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6434038205425438924}
   m_LocalRotation: {x: 0.21152216, y: -0.056019295, z: 0.46479243, w: -0.8579559}
-  m_LocalPosition: {x: 0.84, y: -0.25, z: 9.77}
-  m_LocalScale: {x: 3.1008265, y: 3.100826, z: 3.1008263}
+  m_LocalPosition: {x: 0.854, y: -0.196, z: 9.76}
+  m_LocalScale: {x: 0.74, y: 0.74, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 11
@@ -1613,6 +1620,7 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 0.74
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &6528552779603429663
@@ -1642,13 +1650,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6528552779603429663}
-  m_LocalRotation: {x: 0.33333117, y: 0.73709935, z: 0.5796599, w: 0.09782313}
+  m_LocalRotation: {x: 0.17136581, y: 0.020824281, z: 0.94735146, w: 0.2696766}
   m_LocalPosition: {x: -0.06, y: 0.27, z: 9.45}
-  m_LocalScale: {x: 1.6043674, y: 1.6043674, z: 1.6043674}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: -52.122, y: 120.200005, z: 80.08}
+  m_LocalEulerAnglesHint: {x: 3.036, y: 19.657, z: 148.747}
 --- !u!33 &4738935259613217684
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1818,7 +1826,7 @@ Transform:
   m_GameObject: {fileID: 6597657498183515287}
   m_LocalRotation: {x: 0.19773884, y: -0.00048413876, z: 0.9525462, w: 0.23141934}
   m_LocalPosition: {x: 2.03, y: -1.16, z: 9.36}
-  m_LocalScale: {x: 1.5814214, y: 1.5814213, z: 1.5814214}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 13
@@ -1910,6 +1918,7 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 1
   output: {fileID: 8646907845990150341}
   requiredOutputGrowth: 2
 --- !u!1 &7236214512805884493
@@ -1940,7 +1949,7 @@ Transform:
   m_GameObject: {fileID: 7236214512805884493}
   m_LocalRotation: {x: -0.09144779, y: -0.4407541, z: 0.83334917, w: -0.32078382}
   m_LocalPosition: {x: -0.32085, y: -0.12603, z: 13.841}
-  m_LocalScale: {x: 0.47762853, y: 0.47762844, z: 0.4776285}
+  m_LocalScale: {x: 0.30557, y: 0.30557, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 16
@@ -2032,6 +2041,7 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 0.30557
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &7267217453202403090
@@ -2061,8 +2071,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7267217453202403090}
   m_LocalRotation: {x: 0.05956572, y: 0.16449748, z: -0.9014996, w: -0.39584205}
-  m_LocalPosition: {x: 0.84, y: -0.25, z: 9.77}
-  m_LocalScale: {x: 3.1008265, y: 3.100826, z: 3.1008263}
+  m_LocalPosition: {x: 0.84, y: -0.25, z: 9.7672}
+  m_LocalScale: {x: 0.78114, y: 0.78114, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 17
@@ -2154,6 +2164,7 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 0.78114
   output: {fileID: 0}
   requiredOutputGrowth: 100
 --- !u!1 &7930801247215131858
@@ -2274,6 +2285,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 2
   growthFoodConsumption: 0.1
+  goalGrowth: 1.204145
   rottingGrowth: 2
 --- !u!1 &8646907845990150341
 GameObject:
@@ -2302,7 +2314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8646907845990150341}
   m_LocalRotation: {x: -0.1311623, y: -0.02245037, z: -0.39936334, w: 0.907084}
-  m_LocalPosition: {x: 1.695, y: -0.782, z: 9.608}
+  m_LocalPosition: {x: 1.695, y: -0.782, z: 9.8}
   m_LocalScale: {x: 0.6568603, y: 0.6568603, z: 0.6568603}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
@@ -2393,6 +2405,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 2
   growthFoodConsumption: 0.1
+  goalGrowth: 0.6568603
   rottingGrowth: 2
 --- !u!1 &9148214876904380278
 GameObject:
@@ -2422,7 +2435,7 @@ Transform:
   m_GameObject: {fileID: 9148214876904380278}
   m_LocalRotation: {x: 0.10286712, y: -0.062371217, z: 0.65027446, w: 0.7501142}
   m_LocalPosition: {x: 0.007, y: 0.263, z: 5.238}
-  m_LocalScale: {x: 3.8240619, y: 3.8240612, z: 3.8240614}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 5551141191903732411}
   m_RootOrder: 1
@@ -2514,5 +2527,6 @@ MonoBehaviour:
   inputMineralsAmount: 0.001
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
+  goalScale: 1
   output: {fileID: 0}
   requiredOutputGrowth: 100

@@ -7,6 +7,9 @@ public class TomatoLeaves : PlantElement
     [SerializeField] private float inputWaterAmount = 0.02f;
     [SerializeField] private float outputFoodAmount = 0.2f;
 
+    [Header("Growth")]
+    [SerializeField] private float goalScale;
+
     [Header("Output")]
     [SerializeField] private GameObject output;
     [SerializeField] private float requiredOutputGrowth;
@@ -21,7 +24,7 @@ public class TomatoLeaves : PlantElement
     }
     protected override void OnUpdate() 
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 3.824062f * (Mathf.Clamp(growth, 0f, 1f) + 0.01f), Time.deltaTime);
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * goalScale * Mathf.Clamp(growth, 0f, 1f), Time.deltaTime);
     }
     protected override void Function(float deltaTime)
     {

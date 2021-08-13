@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class TomatoFruit : PlantElement
 {
+    [Header("Growth")]
+    [SerializeField] private float goalScale;
+
     [Header("Rotting")]
     [SerializeField] private float rottingGrowth;
 
-    protected override void OnInitialize() { }
+    protected override void OnInitialize() 
+    {
+        transform.localScale = Vector3.one * 0.01f;
+    }
     protected override void OnUpdate() 
     {
         transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 1.204145f * (Mathf.Clamp(growth, 0f, 1f) + 0.01f), Time.deltaTime);
