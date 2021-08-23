@@ -39,7 +39,7 @@ public class TomatoLeaves : PlantElement
         if (foodStore >= growthFoodConsumption * deltaTime)
         {
             foodStore -= growthFoodConsumption * deltaTime;
-            growth += DebugFloats.growthIncrement * deltaTime;
+            growth += DebugFloats.instance.growthIncrement * deltaTime;
         }
     }
     protected override void HideSymptoms()

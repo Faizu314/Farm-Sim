@@ -43,8 +43,8 @@ public class Movement : MonoBehaviour
     {
         rawMouseDy += Input.GetAxis("Mouse Y") * sensitivity;
         rawMouseDx += Input.GetAxis("Mouse X") * sensitivity;
-        rawMoveX += Input.GetAxisRaw("Horizontal") * movementSpeed;
-        rawMoveZ += Input.GetAxisRaw("Vertical") * movementSpeed;
+        rawMoveX += Input.GetAxisRaw("Horizontal");
+        rawMoveZ += Input.GetAxisRaw("Vertical");
     }
     private void MobileInput()
     {
@@ -62,7 +62,10 @@ public class Movement : MonoBehaviour
     private void PlayerMovement()
     {
         float divider = (rawMoveX != 0f && rawMoveZ != 0f) ? 1.414f : 1f;
-        rb.AddForce((camParent.transform.right * rawMoveX + camParent.transform.forward * rawMoveZ) / divider, ForceMode.Force);
+        Vector3 dir = camParent.transform.right * rawMoveX + camParent.transform.forward * rawMoveZ;
+
+        rb.AddForce(dir * movementSpeed / divider, ForceMode.Force);
+       
 
         rawMoveX = rawMoveZ = 0f;
     }

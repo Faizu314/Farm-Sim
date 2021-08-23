@@ -5,9 +5,11 @@ namespace PlantSimulation
     public static class Transport
     {
         public static readonly float MIN_WATER_SOLUBILITY = 0.2f;
-        public static float Diffuse(float otherContent, float myContent, float surfaceArea)
+        public static float Diffuse(float otherConcentration, float myConcentration, float surfaceArea)
         {
-            float amount = (otherContent - myContent) / (otherContent + myContent + 0.01f) * surfaceArea;
+            float amount = (otherConcentration - myConcentration) / (otherConcentration + myConcentration + 0.0001f) * surfaceArea;
+            if (amount < 0f && -amount > myConcentration * 0.5f)
+                return -myConcentration * 0.5f;
             return amount;
         }
         public static float Osmosis(float otherWaterSolubility, float myWaterSolubility, float maxOsmosis)

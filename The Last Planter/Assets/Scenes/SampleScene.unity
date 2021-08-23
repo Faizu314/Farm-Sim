@@ -163,7 +163,7 @@ MonoBehaviour:
   minCamRotation: -30
   maxCamRotation: 60
   rb: {fileID: 267420595}
-  movementSpeed: 1
+  movementSpeed: 1.8
 --- !u!136 &267420591
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -403,7 +403,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7aa8efc4d004558409828bbac689c8c6, type: 2}
+  - {fileID: 2100000, guid: 100cb36c255b86444bb3fae8cd7ed487, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858322187}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9225cedbe925614a97716cf49ca9fa2, type: 3}
   m_Name: 
@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 267420594}
-  lerpSpeed: 20
+  lerpSpeed: 30
 --- !u!1001 &4641101688284542032
 PrefabInstance:
   m_ObjectHideFlags: 0

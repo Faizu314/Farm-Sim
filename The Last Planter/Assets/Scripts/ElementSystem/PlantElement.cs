@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Cinemachine;
 
+[RequireComponent(typeof(OnClickEvent))]
 public abstract class PlantElement : MonoBehaviour, ICompoundChannel
 {
     protected const int H2O = 0;
@@ -15,6 +18,23 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     [SerializeField] private float initialFoodStore;
     [SerializeField] protected float growthFoodConsumption;
 
+    private GameObject canvasReference;
+    private CinemachineVirtualCamera cinemachineCamera;
+
+    protected Image waterBar;
+    protected Text waterValue;
+    protected Image lightBar;
+    protected Text lightValue;
+    protected Image mineralsBar;
+    protected Text mineralsValue;
+    protected Image growthBar;
+    protected Text growthValue;
+    protected Image healthBar;
+    protected Text healthValue;
+    private Text elementName;
+
+    private Button exitButton;
+
     protected float sunlightIntensity;
     protected float temperature;
     protected int soilHardness;
@@ -28,6 +48,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
 
     private float function_dt;
     private float grow_dt;
+    private bool updateInterface;
     private bool isHealthy;
 
 
@@ -38,6 +59,8 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         FunctionStep();
         GrowStep();
         OnUpdate();
+        if (updateInterface)
+            UpdateUserInterface();
     }
     private void OnDisable()
     {
@@ -48,13 +71,58 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         this.sustainer = sustainer;
         this.environment = environment;
         this.parentObject = parentObject;
-        //transform.parent = parentObject;
-        environment.Subscribe(GetEnvironmentConditions);
+
         function_dt = grow_dt = 0f;
         isHealthy = true;
+        updateInterface = false;
         growth = 0f;
         health = 50f;
         foodStore = initialFoodStore;
+
+        canvasReference = Resources.FindObjectsOfTypeAll<Canvas>()[0].gameObject;
+        cinemachineCamera = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
+
+        var allImages = Resources.FindObjectsOfTypeAll<Image>();
+
+        foreach (Image image in allImages)
+        {
+            string name = image.gameObject.name;
+            if (name == "HealthBar")
+                healthBar = image;
+            if (name == "GrowthBar")
+                growthBar = image;
+            if (name == "WaterBar")
+                waterBar = image;
+            if (name == "MineralBar")
+                mineralsBar = image;
+            if (name == "LightBar")
+                lightBar = image;
+        }
+
+        var allTexts = Resources.FindObjectsOfTypeAll<Text>();
+       
+
+        foreach (Text text in allTexts)
+        {
+            string name = text.gameObject.name;
+            if (name == "HealthValue")
+                healthValue = text;
+            if (name == "GrowthValue")
+                growthValue = text;
+            if (name == "WaterValue")
+                waterValue = text;
+            if (name == "MineralValue")
+                mineralsValue = text;
+            if (name == "LightValue")
+                lightValue = text;
+            if (name == "ElementName")
+                elementName = text;
+        }
+
+        exitButton = Resources.FindObjectsOfTypeAll<Button>()[0];
+
+        environment.Subscribe(GetEnvironmentConditions);
+        GetComponent<OnClickEvent>().RegisterClickEvent(OnClick);
 
         status.Initialize();
         OnInitialize();
@@ -69,20 +137,22 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     private void FunctionStep()
     {
         function_dt += Time.deltaTime;
-        if (function_dt >= DebugFloats.functionTickPeriod)
+        float function_period = DebugFloats.instance.functionTickFrequency / DebugFloats.instance.simulationSpeed;
+        if (function_dt >= function_period)
         {
-            Function(function_dt * DebugFloats.simulationSpeed);
-            Live(function_dt * DebugFloats.simulationSpeed);
+            Function(DebugFloats.instance.simulationStep);
+            Live(DebugFloats.instance.simulationStep);
             function_dt = 0f;
         }
     }
     private void GrowStep()
     {
         grow_dt += Time.deltaTime;
-        if (grow_dt >= DebugFloats.growTickPeriod)
+        float grow_period = DebugFloats.instance.growTickFrequency / DebugFloats.instance.simulationSpeed;
+        if (grow_dt >= grow_period)
         {
             if (foodStore >= growthFoodConsumption * grow_dt)
-                Grow(grow_dt * DebugFloats.simulationSpeed);
+                Grow(DebugFloats.instance.simulationStep);
             AttemptOutput();
             grow_dt = 0f;
         }
@@ -100,7 +170,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
             CheckCompoundContents(deltaTime);
         }
         else
-            health -= DebugFloats.healthIncrement * deltaTime;
+            health -= DebugFloats.instance.healthIncrement * deltaTime;
         //Evaporation(deltaTime);
         CheckSymptoms();
 
@@ -115,13 +185,13 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     }
     private bool CanRespire(float deltaTime)
     {
-        return (foodStore >= DebugFloats.respireFoodConsumption * deltaTime &&
-                GetContent(H2O) >= DebugFloats.respireWaterConsumption * deltaTime);
+        return (foodStore >= DebugFloats.instance.respireFoodConsumption * deltaTime &&
+                GetContent(H2O) >= DebugFloats.instance.respireWaterConsumption * deltaTime);
     }
     private void Respiration(float deltaTime)
     {
-        foodStore -= DebugFloats.respireFoodConsumption * deltaTime;
-        UpdateContent(H2O, -DebugFloats.respireWaterConsumption * deltaTime);
+        foodStore -= DebugFloats.instance.respireFoodConsumption * deltaTime;
+        UpdateContent(H2O, -DebugFloats.instance.respireWaterConsumption * deltaTime);
     }
     private void Evaporation(float deltaTime)
     {
@@ -132,7 +202,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     }
     private void CheckCompoundContents(float deltaTime)
     {
-        float wellBeing = status.GetWellBeing() * DebugFloats.healthIncrement * deltaTime;
+        float wellBeing = status.GetWellBeing() * DebugFloats.instance.healthIncrement * deltaTime;
         if (!(health <= 10f && wellBeing < 0f))
             health += wellBeing;
         if (health <= 0f)
@@ -156,6 +226,39 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
             isHealthy = true;
             HideSymptoms();
         }
+    }
+    private void UpdateUserInterface()
+    {
+        elementName.text = gameObject.name;
+        healthBar.fillAmount = health / 100f;
+        healthValue.text = Mathf.Round(health) + "%";
+        growthBar.fillAmount = growth / 10f;
+        growthValue.text = Mathf.Round(growth * 10f) * 0.1f + "/10";
+        waterBar.fillAmount = GetContent(H2O) / 10f;
+        waterValue.text = Mathf.Round(GetContent(H2O) * 10f) * 0.1f + "/10";
+        mineralsBar.fillAmount = (GetContent(N) + GetContent(PO4) + GetContent(K)) / 30f;
+        mineralsValue.text = Mathf.Round((GetContent(N) + GetContent(PO4) + GetContent(K)) * 10f / 3f) * 0.1f + "/10";
+        lightBar.fillAmount = sunlightIntensity;
+        lightValue.text = Mathf.Round(sunlightIntensity * 100f) * 0.1f + "/10";
+    }
+    private void OnClick()
+    {
+        exitButton.onClick.Invoke();
+        canvasReference.SetActive(true);
+        updateInterface = true;
+        exitButton.onClick.AddListener(OnExitButton);
+        cinemachineCamera.Follow = transform;
+        cinemachineCamera.LookAt = transform;
+        Camera.main.GetComponent<CinemachineBrain>().enabled = true;
+    }
+    public void OnExitButton()
+    {
+        canvasReference.SetActive(false);
+        updateInterface = false;
+        exitButton.onClick.RemoveAllListeners();
+        Camera.main.GetComponent<CinemachineBrain>().enabled = false;
+        Camera.main.transform.localPosition = Vector3.zero;
+        cinemachineCamera.Follow = GameObject.Find("Player").transform;
     }
     #endregion
 

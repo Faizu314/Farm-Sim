@@ -63,7 +63,7 @@ public class TomatoSeed : PlantElement
         {
             foodStore -= growthFoodConsumption * deltaTime;
             UpdateContent(H2O, germinationWaterConsumption * deltaTime * -1f);
-            growth += DebugFloats.growthIncrement * deltaTime;
+            growth += DebugFloats.instance.growthIncrement * deltaTime;
         }
     }
 }

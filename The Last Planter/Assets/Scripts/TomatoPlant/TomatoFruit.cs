@@ -29,7 +29,7 @@ public class TomatoFruit : PlantElement
         if (foodStore >= growthFoodConsumption * deltaTime)
         {
             foodStore -= growthFoodConsumption * deltaTime;
-            growth += DebugFloats.growthIncrement * deltaTime;
+            growth += DebugFloats.instance.growthIncrement * deltaTime;
         }
     }
     protected override void ShowSymptoms(int compoundIndex, bool isExcess)
@@ -51,6 +51,6 @@ public class TomatoFruit : PlantElement
 
     private void Rot(float deltaTime)
     {
-        health -= DebugFloats.healthIncrement * deltaTime;
+        health -= DebugFloats.instance.healthIncrement * deltaTime;
     }
 }

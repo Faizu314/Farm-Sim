@@ -40,7 +40,7 @@ public class TomatoStem : PlantElement
         if (foodStore >= growthFoodConsumption * deltaTime && soilHardness <= maxSoilHardness)
         {
             foodStore -= growthFoodConsumption * deltaTime;
-            growth += DebugFloats.growthIncrement * deltaTime;
+            growth += DebugFloats.instance.growthIncrement * deltaTime;
             growGraphics.SetGrowth(growth);
         }
     }
