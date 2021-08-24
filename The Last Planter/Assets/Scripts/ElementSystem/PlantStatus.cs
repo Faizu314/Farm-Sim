@@ -12,13 +12,16 @@ public class PlantStatus
 
     public List<float> compoundContents;
     private List<float> deltaContents;
+    private int[] symptoms;
 
     public void Initialize()
     {
         compoundContents = new List<float>();
         deltaContents = new List<float>();
+        symptoms = new int[compoundAssociations.Count];
         for (int i = 0; i < compoundAssociations.Count; i++)
         {
+            symptoms[i] = 0;
             compoundContents.Add(0f);
             deltaContents.Add(0f);
         }
@@ -62,30 +65,27 @@ public class PlantStatus
     }
     public float GetWellBeing()
     {
-        float wellBeing = 0f;
+        bool hasAppropriateLevels = true;
         for (int i = 0; i < compoundContents.Count; i++)
         {
             float content = compoundContents[i];
             float minLevel = compoundAssociations[i].deficiencyLevel;
             float maxLevel = compoundAssociations[i].excessLevel;
             if (InRange(content, minLevel, maxLevel))
-                wellBeing += 0.4f;
+            {
+                symptoms[i] = 0;
+            }
             else
-                return -1f;
+            {
+                hasAppropriateLevels = false;
+                symptoms[i] = content < minLevel ? -1 : 1;
+            }
         }
-        return wellBeing;
+        return hasAppropriateLevels ? 1.2f : -1f;
     }
-    public (int, bool) GetSymptom()
+    public int[] GetSymptoms()
     {
-        for (int i = 0; i < compoundContents.Count; i++)
-        {
-            float content = compoundContents[i];
-            float minLevel = compoundAssociations[i].deficiencyLevel;
-            float maxLevel = compoundAssociations[i].excessLevel;
-            if (!InRange(content, minLevel, maxLevel))
-                return (i, content > maxLevel);
-        }
-        return (-1, false);
+        return symptoms;
     }
     public bool HasSymptom(int compoundIndex)
     {

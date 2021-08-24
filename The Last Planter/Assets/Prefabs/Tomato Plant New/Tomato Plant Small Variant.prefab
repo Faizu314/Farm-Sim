@@ -415,7 +415,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 0.44945
@@ -889,7 +889,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 0.57739
@@ -1040,7 +1040,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 0.52528
@@ -1169,32 +1169,32 @@ MonoBehaviour:
   status:
     compoundAssociations:
     - compoundName: Water
-      excessLevel: 5
-      deficiencyLevel: 0
+      excessLevel: 2
+      deficiencyLevel: 0.1
     - compoundName: Nitrogen
       excessLevel: 2
-      deficiencyLevel: 0
+      deficiencyLevel: 0.1
     - compoundName: Phosphorous
       excessLevel: 2
-      deficiencyLevel: 0
+      deficiencyLevel: 0.1
     - compoundName: Potassium
       excessLevel: 2
-      deficiencyLevel: 0
+      deficiencyLevel: 0.1
     - compoundName: Calcium
       excessLevel: 2
       deficiencyLevel: 0
-    surfaceArea: 0.56
+    surfaceArea: 0.05
     absorptionStrength: 0
-    maxOsmosis: 0.83
+    maxOsmosis: 0.2
     compoundContents: []
-  initialFoodStore: 2
+  initialFoodStore: 12
   growthFoodConsumption: 0.1
   minSoilHardness: 0
   minSunlightIntensity: 0
   maxSunlightIntensity: 1
-  germinationWaterConsumption: 0.1
+  germinationWaterConsumption: 0.2
   output: {fileID: 1880449008842315782}
-  requiredOutputGrowth: 0.1
+  requiredOutputGrowth: 1
 --- !u!114 &1525852100248903154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1326,7 +1326,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 0.53249
@@ -1477,7 +1477,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 0.68479
@@ -1628,7 +1628,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 1
@@ -1927,7 +1927,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 0.74
@@ -2281,7 +2281,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 1
@@ -2432,7 +2432,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 0.30557
@@ -2583,7 +2583,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 0.78114
@@ -3030,7 +3030,7 @@ MonoBehaviour:
     compoundContents: []
   initialFoodStore: 0.5
   growthFoodConsumption: 0.1
-  inputMineralsAmount: 0.001
+  inputMineralsAmount: 0.002
   inputWaterAmount: 0.002
   outputFoodAmount: 0.4
   goalScale: 1

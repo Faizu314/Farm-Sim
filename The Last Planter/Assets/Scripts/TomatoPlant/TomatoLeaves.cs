@@ -42,14 +42,6 @@ public class TomatoLeaves : PlantElement
             growth += DebugFloats.instance.growthIncrement * deltaTime;
         }
     }
-    protected override void HideSymptoms()
-    {
-        Debug.Log(gameObject.name + " mineral levels restored");
-    }
-    protected override void ShowSymptoms(int compoundIndex, bool isExcess)
-    {
-        Debug.Log(gameObject.name + " have inappropriate ammounts of: " + compoundIndex + ", " + isExcess);
-    }
     protected override bool ShouldOutput()
     {
         return output != null && growth >= requiredOutputGrowth && !hasGivenFruit;

@@ -44,14 +44,6 @@ public class TomatoStem : PlantElement
             growGraphics.SetGrowth(growth);
         }
     }
-    protected override void ShowSymptoms(int compoundIndex, bool isExcess)
-    {
-        Debug.Log(gameObject.name + " have inappropriate ammounts of: " + compoundIndex + ", " + isExcess);
-    }
-    protected override void HideSymptoms()
-    {
-        Debug.Log(gameObject.name + " mineral levels restored");
-    }
     protected override bool ShouldOutput()
     {
         if (currentOutput >= outputData.Count)

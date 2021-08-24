@@ -3084,9 +3084,9 @@ MonoBehaviour:
   toPlant: {fileID: 5062693783091918849, guid: afb277e1bc12942479148cbf40d4f173, type: 3}
   compoundContents:
   - 8
-  - 2
-  - 2
-  - 2
+  - 1
+  - 1
+  - 1
   - 0
 --- !u!1001 &115614969
 PrefabInstance:
@@ -28758,9 +28758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7961de4ae9825fc49b4123c5bf8205ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simulationSpeed: 1
-  functionTickFrequency: 1
-  growTickFrequency: 2
+  simulationSpeed: 1.11
+  functionTickPeriod: 1
+  growTickPeriod: 2
   simulationStep: 0.5
   respireWaterConsumption: 0.001
   respireFoodConsumption: 0.001

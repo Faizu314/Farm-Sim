@@ -12,12 +12,15 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     protected const int K = 3;
     protected const int Ca = 4;
 
-    [Header("Plant Properties")]
+    private Color GREEN = new Color(112f / 255f, 195f / 255f, 57f / 255f);
+    private Color RED = Color.red;
 
+    [Header("Plant Properties")]
     [SerializeField] private PlantStatus status;
     [SerializeField] private float initialFoodStore;
     [SerializeField] protected float growthFoodConsumption;
 
+    #region UIReferences
     private GameObject canvasReference;
     private CinemachineVirtualCamera cinemachineCamera;
 
@@ -34,6 +37,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     private Text elementName;
 
     private Button exitButton;
+    #endregion
 
     protected float sunlightIntensity;
     protected float temperature;
@@ -54,11 +58,12 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
 
     private void Update()
     {
-        if (health <= 0f)
-            return;
-        FunctionStep();
-        GrowStep();
-        OnUpdate();
+        if (health > 0f)
+        {
+            FunctionStep();
+            GrowStep();
+            OnUpdate();
+        }
         if (updateInterface)
             UpdateUserInterface();
     }
@@ -127,34 +132,28 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         status.Initialize();
         OnInitialize();
     }
-    private void GetEnvironmentConditions(float sunlightIntensity, float temperature, int soilHardness)
-    {
-        this.sunlightIntensity = sunlightIntensity;
-        this.temperature = temperature;
-        this.soilHardness = soilHardness;
-    }
 
     private void FunctionStep()
     {
         function_dt += Time.deltaTime;
-        float function_period = DebugFloats.instance.functionTickFrequency / DebugFloats.instance.simulationSpeed;
-        if (function_dt >= function_period)
+        float function_period = DebugFloats.instance.functionTickPeriod / DebugFloats.instance.simulationSpeed;
+        while (function_dt >= function_period)
         {
             Function(DebugFloats.instance.simulationStep);
             Live(DebugFloats.instance.simulationStep);
-            function_dt = 0f;
+            function_dt -= function_period;
         }
     }
     private void GrowStep()
     {
         grow_dt += Time.deltaTime;
-        float grow_period = DebugFloats.instance.growTickFrequency / DebugFloats.instance.simulationSpeed;
-        if (grow_dt >= grow_period)
+        float grow_period = DebugFloats.instance.growTickPeriod / DebugFloats.instance.simulationSpeed;
+        while (grow_dt >= grow_period)
         {
             if (foodStore >= growthFoodConsumption * grow_dt)
                 Grow(DebugFloats.instance.simulationStep);
             AttemptOutput();
-            grow_dt = 0f;
+            grow_dt -= grow_period;
         }
     }
     private void AttemptOutput()
@@ -171,7 +170,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         }
         else
             health -= DebugFloats.instance.healthIncrement * deltaTime;
-        //Evaporation(deltaTime);
+        Evaporation(deltaTime);
         CheckSymptoms();
 
         if (foodStore < 1f && sustainer is PlantElement)
@@ -212,20 +211,24 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     }
     private void CheckSymptoms()
     {
-        if (health < 10 && isHealthy)
+        if (health < 40 && isHealthy)
         {
             Debug.Log(gameObject.name + ": is unhealthy");
             isHealthy = false;
-            (int index, bool isExcess) = status.GetSymptom();
-            if (index != -1)
-                ShowSymptoms(index, isExcess);
         }
-        else if (health > 20 && !isHealthy)
+        else if (health > 60 && !isHealthy)
         {
             Debug.Log(gameObject.name + ": is healthy again");
             isHealthy = true;
-            HideSymptoms();
         }
+        int[] symptoms = status.GetSymptoms();
+        ShowSymptoms(symptoms);
+    }
+    private void GetEnvironmentConditions(float sunlightIntensity, float temperature, int soilHardness)
+    {
+        this.sunlightIntensity = sunlightIntensity;
+        this.temperature = temperature;
+        this.soilHardness = soilHardness;
     }
     private void UpdateUserInterface()
     {
@@ -250,6 +253,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         cinemachineCamera.Follow = transform;
         cinemachineCamera.LookAt = transform;
         Camera.main.GetComponent<CinemachineBrain>().enabled = true;
+        GetComponent<MeshRenderer>().material.SetColor("_HighlightColor", Color.white);
     }
     public void OnExitButton()
     {
@@ -259,6 +263,7 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
         Camera.main.GetComponent<CinemachineBrain>().enabled = false;
         Camera.main.transform.localPosition = Vector3.zero;
         cinemachineCamera.Follow = GameObject.Find("Player").transform;
+        GetComponent<MeshRenderer>().material.SetColor("_HighlightColor", Color.black);
     }
     #endregion
 
@@ -269,8 +274,21 @@ public abstract class PlantElement : MonoBehaviour, ICompoundChannel
     protected abstract void OnUpdate();
     protected abstract void Function(float deltaTime);
     protected abstract void Grow(float deltaTime);
-    protected abstract void ShowSymptoms(int compoundIndex, bool isExcess);
-    protected abstract void HideSymptoms();
+    protected private void ShowSymptoms(int[] symptoms) 
+    {
+        if (updateInterface)
+        {
+            if (symptoms[0] != 0)
+                waterBar.color = RED;
+            else
+                waterBar.color = GREEN;
+
+            if (symptoms[1] != 0 || symptoms[2] != 0 || symptoms[3] != 0)
+                mineralsBar.color = RED;
+            else
+                mineralsBar.color = GREEN;
+        }
+    }
     protected abstract bool ShouldOutput();
     protected abstract void Output();
     #endregion
